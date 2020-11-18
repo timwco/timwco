@@ -15,6 +15,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'redcarpet'
 gem 'rouge'
 
+# Admin
+gem 'trestle'
+gem 'trestle-auth'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
