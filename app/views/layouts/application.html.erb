@@ -1,15 +1,70 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Timwco</title>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title><%= @title ? "#{@title} - Tim Whitacre" : "Tim Whitacre" %></title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= @description %>" />
 
-  <body>
-    <%= yield %>
-  </body>
+    <!-- OG Tags -->
+    <meta property="og:title" content="<%= @title ? "#{@title} - Tim Whitacre" : "Tim Whitacre" %>">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="<%= @description %>">
+    <meta name="og:image" content="https://timw.co/itme.jpg">
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@timwco">
+    <meta name="twitter:creator" content="@timwco">
+    <meta name="twitter:title" content="<%= @title ? "#{@title} - Tim Whitacre" : "Tim Whitacre" %>">
+    <meta name="twitter:description" content="<%= @description %>">
+    <meta name="twitter:image" content="https://timw.co/itme.jpg">    
+
+    <!-- TODO: Add in Mobile Icons -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49577871-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-49577871-1');
+    </script>    
+
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>    
+</head>
+<body class="home-template">
+  <div class="site-wrapper">
+    <div class="landing">
+      <div class="intro">
+        <h1><a href="/" class="site-name">Tim Whitacre</a></h1>
+        <p>Software <span class="pink-dot"></span> Synthwave <span class="pink-dot"></span> Scotch</p>
+        <p class="site-links">🔗 
+          <a class="underlined" href="/about">About</a> 
+          <a class="underlined" href="/">Projects</a> 
+          <a class="underlined" href="/">Articles</a> 
+          <a class="underlined" href="/">Tools</a>
+          <a class="underlined" target="_blank" href="https://twitter.com/timwco">Twitter</a>
+          <a class="underlined" target="_blank" href="https://linkedin.com/in/twhitacre">LinkedIn</a>
+        </p>
+      </div>
+
+      <%= yield %>
+
+    </div>
+  </div>
+</body>
 </html>
