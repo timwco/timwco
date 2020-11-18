@@ -3,19 +3,7 @@ $text: #141c3a;
 $link: #141c3a; 
 $primary: #ff4a97;
 $secondary: #00e6cb;
-
-.pink-dot {
-  position: relative;
-  top: -2px;
-  width: 6px;
-  height: 6px;
-  content: '';
-  border-radius: 100%;
-  background-color: transparent;
-  display: inline-block;
-  margin: 0 5px;
-  background-color: $primary;
-}
+$thirdary: #fed672;
 
 body,
 html {
@@ -26,6 +14,18 @@ html {
   font-weight: 400;
   font-family: 'Mulish', sans-serif;
   -webkit-font-smoothing: antialiased
+}
+html:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  content: "";
+  display: block;
+  min-height: 100%;
+  height: 100%;
+  background: $primary;
 }
 .site-wrapper {
   min-height: 100%
@@ -113,14 +113,29 @@ img.window-noshadow {
   border: 1px solid #b9b9b9
 }
 
-a.underlined {
+a.underlined, .content a {
   font-weight: 600;
   padding-bottom: .2%;
   background: linear-gradient($secondary, $secondary) no-repeat left 123%/0 40%;;
-  transition: background-size .3s ease-out;
+  transition: background-size .5s ease-out;
 }
-a.underlined:hover {
+a.underlined:hover, .content a:hover, a.underlined.current {
   background-size: 97% 40%;
+}
+.code {
+  font-family: 'Source Code Pro', monospace;
+}
+.pink-dot {
+  position: relative;
+  top: -2px;
+  width: 6px;
+  height: 6px;
+  content: '';
+  border-radius: 100%;
+  background-color: transparent;
+  display: inline-block;
+  margin: 0 5px;
+  background-color: $primary;
 }
 
 // Header Area
@@ -180,6 +195,57 @@ a.underlined:hover {
   margin-left: 25px;
   margin-bottom: 25px;  
 }
+
+
+// Articles
+.articles {
+  li { margin-bottom: 5px; }
+}
+time {
+  margin-left: 5px;
+  font-size: 10px;
+  background-color: $thirdary;
+  padding: 3px 6px;
+  position: relative;
+  top: -2px;  
+}
+// .time-wrap {
+//   display: inline-block;
+//   position: relative;
+//   margin-left: 15px;
+//   line-height: 1;
+//   padding-bottom: 5px;
+//   top: -3px;
+//   time {
+//     color: $text;
+//     font-size: 11px;
+//     padding: 0 10px;
+//   }
+//   &::before {
+//     position: absolute;
+//     z-index: -1;
+//     background-color: $secondary;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     content: '';
+//   }
+//   &::after {
+//     position: absolute;
+//     top: 6px;
+//     right: -6px;
+//     bottom: -6px;
+//     left: 6px;
+//     z-index: -2;
+//     transition-timing-function: ease;
+//     transition-duration: .15s;
+//     transition-property: top,left,right,bottom;
+//     pointer-events: none;
+//     background-color: $text;
+//     content: '';     
+//   }  
+// }
 
 .btn1 {
   padding: 9px;

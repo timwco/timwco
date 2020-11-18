@@ -40,7 +40,7 @@
       gtag('config', 'UA-49577871-1');
     </script>    
 
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -53,10 +53,7 @@
         <h1><a href="/" class="site-name">Tim Whitacre</a></h1>
         <p>Software <span class="pink-dot"></span> Synthwave <span class="pink-dot"></span> Scotch</p>
         <p class="site-links">🔗 
-          <a class="underlined" href="/about">About</a> 
-          <a class="underlined" href="/">Projects</a> 
-          <a class="underlined" href="/">Articles</a> 
-          <a class="underlined" href="/">Tools</a>
+          <%= internal_pages %>
           <a class="underlined" target="_blank" href="https://twitter.com/timwco">Twitter</a>
           <a class="underlined" target="_blank" href="https://linkedin.com/in/twhitacre">LinkedIn</a>
         </p>
