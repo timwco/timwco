@@ -1,13 +1,34 @@
-<div class="content-wrapper">
-  <h1>Latest Writings</h1>
+<div class="content-wrapper index-wrapper">
+
+  <h2>Active Projects</h2>
   <div class="content">
     <ul class="articles">
-    <% @articles.each do |article| %>
+    <% if @active_projects.count > 0 %>
+      <% @active_projects.each do |project| %>
+        <li>
+          <%= link_to project.title, project_path(project.slug), class: "underlined" %> 
+          <span class="proj-desc-sep">—</span>
+          <span class="proj-desc"><%= project.description %></span>
+        </li>
+      <% end %>
+    <% else %>
+      <p>I don't currently have any active projects. Yay for me! Also 😞</p>
+    <% end %>
+    </ul>
+    <p class="more">Checkout more of my projects <%= link_to "here", projects_path, class: "underlined" %>.</p>
+  </div>
+
+  <h2>Latest Writings</h2>
+  <div class="content">
+    <ul class="articles">
+    <% @latest_articles.each do |article| %>
       <li>
         <%= link_to article.title, article_path(article.slug), class: "underlined" %> 
         <time class="code"><%= article.published_at.strftime('%B %e, %Y') %></time>
       </li>
     <% end %>
     </ul>
+    <p class="more">Read more of my articles <%= link_to "here", articles_path, class: "underlined" %>.</p>
   </div>
+
 </div>

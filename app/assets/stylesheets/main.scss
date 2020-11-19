@@ -188,6 +188,17 @@ a.underlined:hover, .content a:hover, a.underlined.current {
 }
 
 
+// Index Page
+.index-wrapper {
+  .content {
+    margin-bottom: 50px;
+  }
+}
+.more {
+  font-size: 12px;
+}
+
+
 // Photos
 .kid-photo {
   max-width: 200px;
@@ -246,6 +257,19 @@ time {
 //     content: '';     
 //   }  
 // }
+
+
+// Projects
+
+.proj-desc {
+  font-size: 13px;
+  font-style: italic;  
+  position: relative;
+}
+.proj-desc-sep {
+  color: $primary;
+  margin: 0 5px;
+}
 
 .btn1 {
   padding: 9px;
