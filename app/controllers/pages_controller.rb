@@ -11,4 +11,9 @@ class PagesController < ApplicationController
     @description = "Everything you ever wanted to know."
   end
 
+  def books
+    @title = "Books"
+    @description = "Sometimes I read books, sometimes I listen to them. Here are some favs."
+  end
+
 end

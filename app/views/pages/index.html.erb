@@ -18,6 +18,19 @@
     <p class="more">Checkout more of my projects <%= link_to "here", projects_path, class: "underlined" %>.</p>
   </div>
 
+  <h2>Currently Reading</h2>
+  <div class="content">
+    <ul class="articles">
+    <% currently_reading.each do |obj| %>
+      <li>
+        <%= link_to obj['book']['title'], obj['book']['link'], class: "underlined", target: "_blank" %> 
+        <time class="code"><%= obj['book']['publication_year'] %></time>
+      </li>
+    <% end %>
+    </ul>
+    <p class="more">Read more of my articles <%= link_to "here", articles_path, class: "underlined" %>.</p>
+  </div>
+
   <h2>Latest Writings</h2>
   <div class="content">
     <ul class="articles">
@@ -30,5 +43,27 @@
     </ul>
     <p class="more">Read more of my articles <%= link_to "here", articles_path, class: "underlined" %>.</p>
   </div>
+
+  <h2>Speaking</h2>
+  <div class="content">
+    <ul class="articles">
+      <li>
+        <%= link_to "Offline First React Native", "https://speakerdeck.com/twhitacre/offline-first-react-native", class: "underlined", target: "_blank" %> 
+        <time class="code">October 18, 2019</time>
+      </li>    
+      <li>
+        <%= link_to "Intro to Elm", "https://speakerdeck.com/twhitacre/intro-to-elm", class: "underlined", target: "_blank" %> 
+        <time class="code">June 16, 2017</time>
+      </li>
+      <li>
+        <%= link_to "Angular Crash Course", "https://speakerdeck.com/twhitacre/angular-crash-course", class: "underlined", target: "_blank" %> 
+        <time class="code">April 16, 2016</time>
+      </li>
+    </ul>
+    <p class="more">
+      <a target="_blank" href="https://twitter.com/intent/tweet?screen_name=timwco" class="twitter-mention-button" data-show-count="true" data-size="large" data-related="timwco">Ping me on Twitter</a> if you'd like me to speak at your event.
+    </p>
+
+  </div>  
 
 </div>

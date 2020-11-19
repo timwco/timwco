@@ -37,4 +37,13 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def currently_reading
+    currently_reading = Rails.cache.fetch('last_updated', expires_in: 12.hours) do
+      client = Goodreads.new(api_key: ENV['GOODREADS_API_KEY'])
+      shelf = client.shelf('67608900', 'currently-reading')
+      shelf.books
+    end
+    currently_reading
+  end
+
 end
