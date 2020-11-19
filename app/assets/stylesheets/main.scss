@@ -1159,7 +1159,7 @@ table tr:hover {
 }
 .back-button button:hover {
   background: inherit;
-  color: #40aaff;
+  color: $primary;
   transform: scale(1.1)
 }
 .back-button svg {

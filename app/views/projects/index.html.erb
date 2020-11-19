@@ -1,0 +1,14 @@
+<div class="content-wrapper">
+  <h1>Projects</h1>
+  <div class="content">
+    <p>Over the years, I've created and helped launch a handful (<%= @projects.count %> to be exact) of projects. Some see the light of day, some only exist for a short while and some are successful. Here are their stories.</p>
+    <ul class="articles">
+    <% @projects.each do |project| %>
+      <li>
+        <%= link_to project.title, project_path(project.slug), class: "underlined" %> 
+        <time class="code"><%= project.started %></time>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

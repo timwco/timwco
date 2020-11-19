@@ -1,0 +1,12 @@
+<% @description = @project.description %>
+
+<div class="content-wrapper">
+  <h1><%= @project.title %> <time class="code"><%= @project.started %></time></h1>
+  <div class="content">
+    <p><%= @project.description %></p>
+    <h3>Outcome</h3>
+    <p><%= @project.outcome %></p>
+    <h3>Story</h3>
+    <%= markdown(@project.notes) %>
+  </div>
+</div>
