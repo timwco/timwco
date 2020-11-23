@@ -4,6 +4,8 @@ $link: #141c3a;
 $primary: #ff4a97;
 $secondary: #00e6cb;
 $thirdary: #fed672;
+$purple: #c18cee;
+$white: #FFFFFF;
 
 body,
 html {
@@ -122,6 +124,8 @@ a.underlined, .content a {
 a.underlined:hover, .content a:hover, a.underlined.current {
   background-size: 97% 40%;
 }
+a.notunderlined { background: none; }
+
 .code {
   font-family: 'Source Code Pro', monospace;
 }
@@ -151,8 +155,10 @@ a.underlined:hover, .content a:hover, a.underlined.current {
 
 .site-links {
   a {
-    margin-left: 15px;
+    margin-right: 15px;
     font-weight: 600;
+    margin-bottom: 15px;
+    display: inline-block;
   }
 }
 
@@ -178,14 +184,6 @@ a.underlined:hover, .content a:hover, a.underlined.current {
     }
   }  
 }
-@media (max-width: 600px) {
-  .content-wrapper {
-    padding: 0 20px 40px;
-    .content {
-      max-width: 95%;
-    }
-  }  
-}
 
 
 // Index Page
@@ -195,7 +193,12 @@ a.underlined:hover, .content a:hover, a.underlined.current {
   }
 }
 .more {
-  font-size: 12px;
+  &::before {
+    content: "🔥";
+    padding-right: 5px;
+    // padding-left: 5px;
+  }
+  font-size: 13px;
 }
 
 
@@ -220,6 +223,33 @@ time {
   position: relative;
   top: -2px;  
 }
+
+.take-me {
+  font-size: 11px;
+}
+
+.tag {
+  margin-left: 5px;
+  font-size: 10px;
+  padding: 3px 6px;
+  position: relative;
+  top: -2px;   
+  &.purple { background-color: $purple; color: $white; }
+  &.prime { background-color: $primary; color: $white; } 
+  &.second { background-color: $secondary}
+  &.third { background-color: $thirdary}
+}
+
+.large-tag {
+  font-size: 12px;
+  padding: 3px 6px;
+  position: relative;
+  &.purple { background-color: $purple; color: $white; }
+  &.prime { background-color: $primary; color: $white; } 
+  &.second { background-color: $secondary}
+  &.third { background-color: $thirdary}
+}
+
 // .time-wrap {
 //   display: inline-block;
 //   position: relative;
@@ -304,6 +334,41 @@ time {
 .view-more-button a:hover svg {
   transform: translateX(5px)
 }
+
+// Tables
+.responsive-table{
+  overflow-x:auto;
+  word-break:normal
+  table{
+    font-family:var(--font-family-four);
+    font-size:14px;
+    display:table;
+    width:100%;
+    max-width:100%;
+    border-spacing:0;
+    border-collapse:collapse;
+    text-align:left;
+    background-color:transparent
+  }
+  th {
+    border-top:1px solid var(--color-three)
+  }
+  th, td{
+    font-weight:var(--font-weight-four-medium);
+    display:table-cell;
+    padding:10px 12px;
+    border-bottom:1px solid var(--color-three)
+  }
+  th:first-child, td:first-child{
+    padding-left:5px
+  }
+  th:last-child, td:last-child{
+    padding-right:5px
+  }
+}
+
+
+
 #nprogress {
   pointer-events: none
 }
@@ -372,11 +437,6 @@ time {
 @media (max-width: 1000px) {
   .intro {
     padding: 30px
-  }
-}
-@media (max-width: 600px) {
-  .intro {
-    padding: 30px 20px
   }
 }
 .work .projects {
@@ -725,11 +785,6 @@ footer .site-footer-content .site-footer-nav a {
     padding: 30px
   }
 }
-@media (max-width: 600px) {
-  footer .site-footer-content {
-    padding: 30px 20px
-  }
-}
 .post {
   display: -ms-flexbox;
   display: flex;
@@ -957,12 +1012,6 @@ footer .site-footer-content .site-footer-nav a {
 }
 .kg-gallery-card figcaption {
   padding: 0
-}
-.all-posts-page,
-.tag {
-  position: relative;
-  width: 50%;
-  padding: 50px 30px
 }
 .all-posts-page.no-image,
 .tag.no-image {

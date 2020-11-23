@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   def index 
     @title = 'Projects'
     @description = "I start things often... sometimes I finish them."
-    @projects = Project.order('started ASC')
+    @projects = Project.order('started DESC')
   end
 
   def show

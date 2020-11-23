@@ -1,10 +1,10 @@
 <div class="content-wrapper index-wrapper">
 
-  <h2>Active Projects</h2>
+  <h2>Current Projects</h2>
   <div class="content">
     <ul class="articles">
-    <% if @active_projects.count > 0 %>
-      <% @active_projects.each do |project| %>
+    <% if @featured_projects.count > 0 %>
+      <% @featured_projects.each do |project| %>
         <li>
           <%= link_to project.title, project_path(project.slug), class: "underlined" %> 
           <span class="proj-desc-sep">—</span>

@@ -1,12 +1,15 @@
 <% @description = @project.description %>
 
 <div class="content-wrapper">
-  <h1><%= @project.title %> <time class="code"><%= @project.started %></time></h1>
+  <h1><%= @project.title %></h1>
   <div class="content">
-    <p><%= @project.description %></p>
-    <h3>Outcome</h3>
-    <p><%= @project.outcome %></p>
+    <ul>
+      <li><b>Description:</b> <%= @project.description %></li>
+      <li><b>Started:</b> <span class="tag third"><%= @project.started %></span></li>
+      <li><b>Status:</b> <%= @project.status.humanize %></li>
+      <li><a class="large-tag purple notunderlined" href="<%= @project.link %>" target="_blank">Visit Here</a></li>
+    </ul>
     <h3>Story</h3>
-    <%= markdown(@project.notes) %>
+    <%= markdown(@project.story) %>
   </div>
 </div>
