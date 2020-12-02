@@ -16,6 +16,7 @@ module ApplicationHelper
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
+    text.gsub!(/https?:[\/|.|\w|\s|-]*\.(?:jpg|gif|png)/, '/image-not-found.jpg')
     markdown.render(text).html_safe
   end
 
@@ -24,7 +25,7 @@ module ApplicationHelper
       { slug: 'about', display: 'About' },
       { slug: 'articles', display: 'Articles' },
       { slug: 'projects', display: 'Projects' },
-      { slug: 'tools', display: 'Tools' }
+      # { slug: 'tools', display: 'Tools' }
     ]
 
     html = ""
