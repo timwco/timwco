@@ -163,6 +163,11 @@ a.notunderlined { background: none; }
   }
 }
 
+.social {
+  width: 15px;
+  vertical-align: middle;
+}
+
 // Content Wrappers
 .content-wrapper {
   padding: 0 70px 50px;
@@ -228,6 +233,8 @@ time {
 .take-me {
   font-size: 11px;
 }
+
+.bold { font-weight: bold; }
 
 .tag {
   margin-left: 5px;
@@ -1094,7 +1101,6 @@ footer .site-footer-content .site-footer-nav a {
   .all-posts-page,
   .tag {
     width: 100%;
-    padding-top: 450px
   }
   .all-posts-page .post-full-image,
   .tag .post-full-image {
@@ -1112,11 +1118,6 @@ footer .site-footer-content .site-footer-nav a {
   }
 }
 @media (max-width: 600px) {
-  .all-posts-page,
-  .tag {
-    padding: 100px 20px 50px;
-    padding-top: 100px
-  }
   .all-posts-page .post-full-image,
   .tag .post-full-image {
     display: none

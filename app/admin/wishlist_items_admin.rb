@@ -1,6 +1,6 @@
 Trestle.resource(:wishlist_items) do
   menu do
-    item :wishlist_items, icon: "fa fa-star"
+    item :wishlist_items, icon: "fa fa-shopping-cart"
   end
   
   # Customize the table columns shown on the index view.
@@ -11,6 +11,9 @@ Trestle.resource(:wishlist_items) do
     column :category do |wli|
       wli.category.humanize
     end
+    column :price do |wli|
+      wli.price
+    end
     actions
   end
 
@@ -20,6 +23,7 @@ Trestle.resource(:wishlist_items) do
     text_field :url
     text_field :description  
     select :category, WishlistItem.categories.keys.map { |cat| [cat.humanize, cat] }
+    select :price, WishlistItem.prices.keys.map { |cat| [cat, cat] }
     row do
       col { datetime_field :updated_at }
       col { datetime_field :created_at }

@@ -2,29 +2,68 @@
   <h1>Wishlist</h1>
   <div class="content">
     <p>This is mostly for family & friends, but here is a list of items I'd love to own.</p>
-    <div class="responsive-table">
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align:left">Name</th>
-            <th style="text-align:left">Description</th>
-            <th style="text-align:left">Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @wishlist.each do |item| %>
-            <tr>
-              <td style="text-align:left">
-                <%= link_to item.name, item.url, class: "underlined", target: "_blank" %>
-              </td>
-              <td style="text-align:left"><%= item.description %></td>
-              <td style="text-align:left">
-                <span class="tag purple"><%= item.category.humanize %></span>
-              </td>
-            </tr>
-          <% end %>        
-        </tbody>
-      </table>
+    <div class="inner-area">
+
+      <% if @wishlist_games.count > 0 %>
+      <h3>Games</h3>
+      <ul class="articles">
+        <% @wishlist_games.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul> 
+      <% end %>     
+
+      <% if @wishlist_kitchen.count > 0 %>
+      <h3>Kitchen</h3>
+      <ul class="articles">
+        <% @wishlist_kitchen.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <% if @wishlist_tech.count > 0 %>
+      <h3>Tech</h3>
+      <ul class="articles">
+        <% @wishlist_tech.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <% if @wishlist_books.count > 0 %>
+      <h3>Books</h3>
+      <ul class="articles">
+        <% @wishlist_books.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <% if @wishlist_misc.count > 0 %>
+      <h3>Misc</h3>
+      <ul class="articles">
+        <% @wishlist_misc.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+    
     </div>
   </div>
 </div>
