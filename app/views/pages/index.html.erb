@@ -22,9 +22,10 @@
   <div class="content">
     <ul class="articles">
     <% currently_reading.each do |obj| %>
+      <% $date = obj['book']['publication_year'] ? obj['book']['publication_year'] : '2020'%>
       <li>
         <%= link_to obj['book']['title'], obj['book']['link'], class: "underlined", target: "_blank" %> 
-        <time class="code"><%= obj['book']['publication_year'] %></time>
+        <time class="code"><%= $date %></time>
       </li>
     <% end %>
     </ul>

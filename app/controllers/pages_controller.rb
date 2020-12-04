@@ -11,9 +11,10 @@ class PagesController < ApplicationController
     @description = "Everything you ever wanted to know."
   end
 
-  def books
-    @title = "Books"
-    @description = "Sometimes I read books, sometimes I listen to them. Here are some favs."
+  def wishlist
+    @title = "Wishlist"
+    @description = "Mostly for friends & family, here are things I'd like to own one day."
+    @wishlist = WishlistItem.all
   end
 
 end

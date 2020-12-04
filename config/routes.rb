@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show]
 
   get 'about', to: 'pages#about'  
+  get 'wishlist', to: 'pages#wishlist'
 
   root 'pages#index'
 end

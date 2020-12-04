@@ -1,0 +1,30 @@
+<div class="content-wrapper">
+  <h1>Wishlist</h1>
+  <div class="content">
+    <p>This is mostly for family & friends, but here is a list of items I'd love to own.</p>
+    <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">Name</th>
+            <th style="text-align:left">Description</th>
+            <th style="text-align:left">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @wishlist.each do |item| %>
+            <tr>
+              <td style="text-align:left">
+                <%= link_to item.name, item.url, class: "underlined", target: "_blank" %>
+              </td>
+              <td style="text-align:left"><%= item.description %></td>
+              <td style="text-align:left">
+                <span class="tag purple"><%= item.category.humanize %></span>
+              </td>
+            </tr>
+          <% end %>        
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
