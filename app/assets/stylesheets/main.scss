@@ -19,7 +19,7 @@ html {
   overflow-x: hidden;
 }
 html:before {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -156,7 +156,7 @@ a.notunderlined { background: none; }
 
 .site-links {
   a {
-    margin-right: 15px;
+    margin-right: 13px;
     font-weight: 600;
     margin-bottom: 15px;
     display: inline-block;
@@ -1610,6 +1610,12 @@ nav.pagination .ellipses {
   .floating-header-divider,
   .floating-header-title {
     visibility: hidden
+  }
+}
+@media (max-width: 599px) {
+  .kid-photo { max-width: 125px; }
+  .floating-header-share-label {
+    display: none
   }
 }
 @media (max-width: 450px) {
