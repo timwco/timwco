@@ -207,6 +207,10 @@ a.notunderlined { background: none; }
   font-size: 13px;
 }
 
+.content-error-page {
+  text-align: center;
+}
+
 
 // Photos
 .kid-photo {
@@ -215,7 +219,10 @@ a.notunderlined { background: none; }
   margin-left: 25px;
   margin-bottom: 25px;  
 }
-
+.kid-photo-error {
+  max-width: 150px;
+  margin: 50px 0;
+}
 
 // Articles
 .articles {
