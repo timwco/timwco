@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   def about
     @title       = "About"
     @description = "Everything you ever wanted to know."
+    @projects_count = Project.all.count
+    @acquired_count = Project.where(status: :acquired).count
   end
 
   def wishlist

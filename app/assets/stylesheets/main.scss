@@ -6,6 +6,7 @@ $secondary: #00e6cb;
 $thirdary: #fed672;
 $purple: #c18cee;
 $white: #FFFFFF;
+$darkPurple: #6d41a1;
 
 body,
 html {
@@ -121,6 +122,7 @@ a.underlined, .content a {
   padding-bottom: .2%;
   background: linear-gradient($secondary, $secondary) no-repeat left 123%/0 40%;;
   transition: background-size .5s ease-out;
+  color: $darkPurple;
 }
 a.underlined:hover, .content a:hover, a.underlined.current {
   background-size: 97% 40%;
@@ -160,6 +162,7 @@ a.notunderlined { background: none; }
     font-weight: 600;
     margin-bottom: 15px;
     display: inline-block;
+    color: $darkPurple;
   }
 }
 

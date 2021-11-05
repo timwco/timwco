@@ -32,19 +32,6 @@
     <p class="more">See more of my favorite books <%= link_to "here", "https://www.goodreads.com/review/list/67608900?shelf=read", class: "underlined", target: "_blank" %>.</p>
   </div>
 
-  <h2>Latest Writings</h2>
-  <div class="content">
-    <ul class="articles">
-    <% @latest_articles.each do |article| %>
-      <li>
-        <%= link_to article.title, article_path(article.slug), class: "underlined" %> 
-        <time class="code"><%= article.published_at.strftime('%B %e, %Y') %></time>
-      </li>
-    <% end %>
-    </ul>
-    <p class="more">Read more of my articles <%= link_to "here", articles_path, class: "underlined" %>.</p>
-  </div>
-
   <h2>Speaking</h2>
   <div class="content">
     <ul class="articles">

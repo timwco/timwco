@@ -23,7 +23,7 @@ module ApplicationHelper
   def internal_pages
     pages = [
       { slug: 'about', display: 'About' },
-      { slug: 'articles', display: 'Articles' },
+      { slug: 'articles', display: 'Thoughts' },
       { slug: 'projects', display: 'Projects' },
       # { slug: 'tools', display: 'Tools' }
     ]
