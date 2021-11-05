@@ -254,7 +254,7 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
-  arm64-darwin-21
+  ruby
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
