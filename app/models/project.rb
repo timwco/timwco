@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-  enum status: [:active, :abandoned, :acquired,]
+  enum status: [:active, :abandoned, :acquired]
 end

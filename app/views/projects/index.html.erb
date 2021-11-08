@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th style="text-align:left">Title</th>
-            <th style="text-align:left">Description</th>
+            <th style="text-align:left" class="mobile-hide">Description</th>
             <th style="text-align:left">Started</th>
             <th style="text-align:left">Status</th>
           </tr>
@@ -15,10 +15,10 @@
         <tbody>
           <% @projects.each do |project| %>
             <tr>
-              <td style="text-align:left">
+              <td style="text-align:left" class="project-index-title">
                 <%= link_to project.title, project_path(project.slug), class: "underlined" %>
               </td>
-              <td style="text-align:left"><%= project.description %></td>
+              <td style="text-align:left" class="mobile-hide"><%= project.description %></td>
               <td style="text-align:left">
                 <time class="code"><%= project.started %></time>
               </td>

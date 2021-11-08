@@ -1606,6 +1606,9 @@ nav.pagination .ellipses {
   height: inherit;
   background-color: $link
 }
+
+
+// Responsive
 @media (max-width: 800px) {
   .floating-header-logo {
     margin-left: 10px
@@ -1623,6 +1626,8 @@ nav.pagination .ellipses {
   .floating-header-share-label {
     display: none
   }
+  .mobile-hide { display: none !important; }
+  .project-index-title { font-size: 13px; }
 }
 @media (max-width: 450px) {
   .floating-header-share-label {
