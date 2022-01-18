@@ -18,10 +18,10 @@ require("channels")
 
 // Favicon JS
 const favicon_images = [
-  'favicons/fav1.png',
-  'favicons/fav2.png',
-  'favicons/fav3.png',
-  'favicons/fav4.png',
+  '/favicons/fav1.png',
+  '/favicons/fav2.png',
+  '/favicons/fav3.png',
+  '/favicons/fav4.png',
 ];
     
 let image_counter = 0; // To keep track of the current image
