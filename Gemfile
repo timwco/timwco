@@ -5,9 +5,9 @@ ruby "3.1.2"
 
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem 'pg'
-gem 'puma', '~> 4.1'
+gem 'puma'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'rexml'
