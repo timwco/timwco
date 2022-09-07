@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :projects, only: [:index, :show]
 
-  get 'about', to: 'pages#about'  
+  get 'about',    to: 'pages#about'  
+  get 'music',    to: 'pages#music'
   get 'wishlist', to: 'pages#wishlist'
 
   root 'pages#index'

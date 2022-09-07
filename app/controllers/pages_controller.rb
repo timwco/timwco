@@ -13,6 +13,10 @@ class PagesController < ApplicationController
     @acquired_count = Project.where(status: :acquired).count
   end
 
+  def music
+    @albums = Album.all
+  end
+
   def wishlist
     @title       = "Wishlist"
     @description = "Mostly for friends & family, here are things I'd like to own one day."
