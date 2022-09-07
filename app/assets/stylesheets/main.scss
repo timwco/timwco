@@ -1607,6 +1607,37 @@ nav.pagination .ellipses {
   background-color: $link
 }
 
+// Music Albums
+.music-albums {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  .album {
+    max-width: 200px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    .album-name {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+    .album-info {
+      // display: flex;
+      // justify-content: space-between;
+      // align-items: flex-start;
+      a:hover {
+        border-bottom: none;
+      }
+      img {
+        max-width: 20px;
+        margin-right: 5px;
+      }
+      .album-links {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
 
 // Responsive
 @media (max-width: 800px) {
@@ -1620,6 +1651,7 @@ nav.pagination .ellipses {
   .floating-header-title {
     visibility: hidden
   }
+  .music-albums { grid-template-columns: 1fr 1fr 1fr 1fr; }
 }
 @media (max-width: 599px) {
   .kid-photo { max-width: 125px; }
@@ -1628,11 +1660,13 @@ nav.pagination .ellipses {
   }
   .mobile-hide { display: none !important; }
   .project-index-title { font-size: 13px; }
+  .music-albums { grid-template-columns: 1fr 1fr 1fr; }
 }
 @media (max-width: 450px) {
   .floating-header-share-label {
     display: none
   }
+  .music-albums { grid-template-columns: 1fr 1fr; }
 }
 
 // Cubes

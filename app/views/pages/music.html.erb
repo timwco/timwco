@@ -1,0 +1,21 @@
+<div class="content-wrapper">
+  <h1>Music</h1>
+  <div class="content">
+    <p>Sorry if you thought you were going to listen to music made by me. <br />I actually did that at one time, but those CD's are in storage and it sounds like a lot of work to get them out.</p>
+    <p>Instead, here are my five favorite albums of all time. Enjoy.</p>
+    <div class="music-albums">
+      <% @albums.each do |album| %>
+        <div class="album">
+          <%= image_tag("music/#{album.image_slug}.jpg", alt: album.name, class: 'album-art') %>
+          <div class="album-info">
+            <p class="album-name"><b><%= album.name %></b> <br /> <%= album.artist %></p>
+            <div class="album-links">
+              <a target="_blank" href="<%= album.apple_music_url %>" class="notunderlined"><%= image_tag("music/apple.png", alt: 'Apple Music', class: 'album-link') %></a>
+              <a target="_blank" href="<%= album.spotify_url %>" class="notunderlined"><%= image_tag("music/spotify.png", alt: 'Spotify', class: 'album-link') %></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

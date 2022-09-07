@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_120924) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_132827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_120924) do
     t.string "last_name"
     t.string "remember_token"
     t.datetime "remember_token_expires_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.string "artist"
+    t.string "image_slug"
+    t.string "apple_music_url"
+    t.string "spotify_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
