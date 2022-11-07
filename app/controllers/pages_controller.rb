@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @description       = "Yo 👋! Welcome to the home of Tim Whitacre, an engineer turned entrepreneur based in Atlanta. Let's make things."
+    @description       = "Yo 👋! Welcome to the home of Tim Whitacre, an engineer turned entrepreneur based in Kansas City. Let's make things."
     @latest_articles   = Article.order("published_at ASC").last(3).reverse
     @featured_projects = Project.order('started ASC').where(featured: true)
   end
