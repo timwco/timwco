@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show]
 
   get 'about',    to: 'pages#about'  
+  get 'book',     to: 'pages#book'
   get 'music',    to: 'pages#music'
   get 'wishlist', to: 'pages#wishlist'
 

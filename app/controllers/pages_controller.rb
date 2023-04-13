@@ -13,6 +13,11 @@ class PagesController < ApplicationController
     @acquired_count = Project.where(status: :acquired).count
   end
 
+  def book
+    @title       = "Book"
+    @description = "CODE SCHOOL: Overcome Imposter Syndrome. Kick-start Your Tech Career."
+  end
+
   def music
     @albums = Album.all
   end

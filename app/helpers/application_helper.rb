@@ -23,6 +23,7 @@ module ApplicationHelper
   def internal_pages
     pages = [
       { slug: 'about',    display: 'About' },
+      { slug: 'book',     display: 'Book'},
       { slug: 'articles', display: 'Thoughts' },
       { slug: 'projects', display: 'Projects' },
       { slug: 'music',    display: 'Music' }
@@ -33,6 +34,9 @@ module ApplicationHelper
       html += "<a href='/#{page[:slug]}' class='underlined"
       html += request.path_info.include?(page[:slug]) ? " current'" : "'"
       html += ">#{page[:display]}</a>"
+      if page != pages.last
+        html += "<span class='pink-dot'></span>"
+      end
     end
 
     html.html_safe
