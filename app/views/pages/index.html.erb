@@ -21,12 +21,16 @@
   <h2>Currently Reading</h2>
   <div class="content">
     <ul class="articles">
-    <% currently_reading.each do |obj| %>
-      <% $date = obj['book']['publication_year'] ? obj['book']['publication_year'] : '2020'%>
-      <li>
-        <%= link_to obj['book']['title'], obj['book']['link'], class: "underlined", target: "_blank" %> 
-        <time class="code"><%= $date %></time>
-      </li>
+    <% if currently_reading.present? && currently_reading.count > 0 %>
+      <% currently_reading.each do |obj| %>
+        <% $date = obj['book']['publication_year'] ? obj['book']['publication_year'] : '2020'%>
+        <li>
+          <%= link_to obj['book']['title'], obj['book']['link'], class: "underlined", target: "_blank" %> 
+          <time class="code"><%= $date %></time>
+        </li>
+      <% end %>
+    <% else %>
+      <li>I'm more into TikTok these days 😏</li>
     <% end %>
     </ul>
     <p class="more">See more of my favorite books <%= link_to "here", "https://www.goodreads.com/review/list/67608900?shelf=read", class: "underlined", target: "_blank" %>.</p>
