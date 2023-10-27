@@ -8,6 +8,9 @@
     "@rails/webpacker": "4.3.0",
     "turbolinks": "^5.2.0"
   },
+  "scripts": {
+    "build:digitalocean": "yarn install --production=false && yarn run build && rm -rf node_modules && yarn install --production --frozen-lockfile"
+  },
   "version": "0.1.0",
   "engines": {
     "node": "18.18.2"
