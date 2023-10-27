@@ -24,7 +24,7 @@ module ApplicationHelper
     pages = [
       { slug: 'about',    display: 'About' },
       { slug: 'book',     display: 'Book'},
-      { slug: 'articles', display: 'Thoughts' },
+      # { slug: 'articles', display: 'Thoughts' },
       { slug: 'projects', display: 'Projects' },
       { slug: 'music',    display: 'Music' }
     ]
