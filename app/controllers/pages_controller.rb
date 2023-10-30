@@ -30,6 +30,8 @@ class PagesController < ApplicationController
     @wishlist_tech    = WishlistItem.where(category: :tech)
     @wishlist_kitchen = WishlistItem.where(category: :kitchen)
     @wishlist_books   = WishlistItem.where(category: :books)
+    @wishlist_sports  = WishlistItem.where(category: :sports)
+    @wishlist_lego    = WishlistItem.where(category: :lego)
     @wishlist_misc    = WishlistItem.where(category: :misc)
   end
 

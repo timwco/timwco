@@ -52,6 +52,30 @@
       </ul>
       <% end %>
 
+      <% if @wishlist_lego.count > 0 %>
+      <h3>Legos</h3>
+      <ul class="articles">
+        <% @wishlist_lego.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <% if @wishlist_sports.count > 0 %>
+      <h3>Sports</h3>
+      <ul class="articles">
+        <% @wishlist_sports.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
       <% if @wishlist_misc.count > 0 %>
       <h3>Misc</h3>
       <ul class="articles">
