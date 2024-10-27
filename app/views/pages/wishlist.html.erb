@@ -40,6 +40,18 @@
       </ul>
       <% end %>
 
+      <% if @wishlist_tech.count > 0 %>
+      <h3>Music</h3>
+      <ul class="articles">
+        <% @wishlist_music.each do |item| %>
+          <li>
+            <%= link_to item.name, item.url, class: "underlined" %> 
+            <time class="code"><%= item.price %></time>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
       <% if @wishlist_books.count > 0 %>
       <h3>Books</h3>
       <ul class="articles">
