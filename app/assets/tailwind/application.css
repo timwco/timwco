@@ -1,1 +1,21 @@
+/* Tailwind CSS */
 @import "tailwindcss";
+
+/* Plugins */
+@plugin "@tailwindcss/typography";
+
+/* Variants */
+@variant dark (&:where(.dark, .dark *));
+
+/* Theme */
+@import "./themes/theme-dark.css";
+
+@theme {
+  --font-sans: "Kode Mono", "monospace", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* https://rsms.me/inter/lab */
+  --font-sans--font-feature-settings: 'liga', 'cv02', 'cv03', 'cv04', 'cv11';
+
+  /* Brand Color Utilities */
+  --color-primary: var(--color-primary-400);
+  --color-secondary: var(--color-secondary-400);
+}
