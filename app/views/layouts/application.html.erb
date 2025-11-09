@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= class_names(dark: true) %>" lang="<%= I18n.locale %>">
   <head>
     <title><%= content_for(:title) || "Tim Whitacre" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,7 +27,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-neutral-900 text-neutral-0 font-sans">
+  <body class="font-sans">
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>

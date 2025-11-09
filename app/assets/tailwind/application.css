@@ -6,15 +6,13 @@
 
 /* Variants */
 @variant dark (&:where(.dark, .dark *));
+@import "./themes/theme-layout.css" layer(utility);
 
-/* Theme */
-@import "./themes/theme-dark.css";
-
+/* Themes */
+@import "./themes/theme-general.css" layer(theme);
+@import "./themes/theme-dark.css" layer(theme);
+@import "./themes/theme-light.css" layer(theme);
 @theme {
-  --font-sans: "Kode Mono", "monospace", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* https://rsms.me/inter/lab */
-  --font-sans--font-feature-settings: 'liga', 'cv02', 'cv03', 'cv04', 'cv11';
-
   /* Brand Color Utilities */
   --color-primary: var(--color-primary-400);
   --color-secondary: var(--color-secondary-400);
