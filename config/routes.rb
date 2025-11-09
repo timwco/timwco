@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#index"
+
+
+  get "styleguide" => "pages#styleguide", as: :styleguide
 end
