@@ -12,8 +12,6 @@
 @import "./themes/theme-general.css" layer(theme);
 @import "./themes/theme-dark.css" layer(theme);
 @import "./themes/theme-light.css" layer(theme);
-@theme {
-  /* Brand Color Utilities */
-  --color-primary: var(--color-primary-400);
-  --color-secondary: var(--color-secondary-400);
-}
+
+/* Base Setup */
+@import "./themes/theme-setup.css";

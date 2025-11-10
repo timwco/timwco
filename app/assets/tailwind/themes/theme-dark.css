@@ -2,30 +2,6 @@
 .dark {
   /* Tells browser to use dark mode scroll bars, etc */
   color-scheme: dark;
-  
-  --color-primary-50: oklch(0.98 0.028 180.23);
-  --color-primary-100: oklch(0.968 0.044 178.87);
-  --color-primary-200: oklch(0.936 0.093 179.74);
-  --color-primary-300: oklch(0.904 0.148 179.49);
-  --color-primary-400: oklch(0.874 0.159 179.69);
-  --color-primary-500: oklch(0.749 0.136 180.09);
-  --color-primary-600: oklch(0.623 0.114 179.45);
-  --color-primary-700: oklch(0.507 0.093 178.93);
-  --color-primary-800: oklch(0.38 0.069 179.13);
-  --color-primary-900: oklch(0.262 0.048 179);
-  --color-primary-950: oklch(0.195 0.036 178.49);
-  --color-secondary-50: oklch(0.96 0.022 359.74);
-  --color-secondary-100: oklch(0.92 0.044 0.38);
-  --color-secondary-200: oklch(0.839 0.097 358.82);
-  --color-secondary-300: oklch(0.762 0.155 359.27);
-  --color-secondary-400: oklch(0.687 0.224 359.08);
-  --color-secondary-500: oklch(0.602 0.244 359.17);
-  --color-secondary-600: oklch(0.51 0.207 359.13);
-  --color-secondary-700: oklch(0.42 0.171 358.9);
-  --color-secondary-800: oklch(0.329 0.133 359.34);
-  --color-secondary-900: oklch(0.236 0.096 359.29);
-  --color-secondary-950: oklch(0.187 0.076 359.65);
-
 
   /*Primary*/
   --bg-primary: var(--color-primary-700);
@@ -128,5 +104,6 @@
   --base-text-on-tooltip: var(--color-gray-50);
 
   /* Background */
-  background-color: var(--base-bg-low);
+  --background: var(--bg-dark);
+  --foreground: var(--base-text-tertiary);
 }
