@@ -12,6 +12,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#index"
 
+  # Pages
+  get "now" => "pages#now", as: :now
+  get "links" => "pages#links", as: :links
+  get "thoughts" => "pages#thoughts", as: :thoughts
+  get "projects" => "pages#projects", as: :projects
+  get "book" => "pages#book", as: :book
+  get "music" => "pages#music", as: :music
+  get "wishlist" => "pages#wishlist", as: :wishlist
+
 
   get "styleguide" => "pages#styleguide", as: :styleguide
 end

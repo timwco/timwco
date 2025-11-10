@@ -6,7 +6,6 @@
 
 /* Variants */
 @variant dark (&:where(.dark, .dark *));
-@import "./themes/theme-layout.css" layer(utility);
 
 /* Themes */
 @import "./themes/theme-general.css" layer(theme);
@@ -14,4 +13,4 @@
 @import "./themes/theme-light.css" layer(theme);
 
 /* Base Setup */
-@import "./themes/theme-setup.css";
+@import "./main.css";
