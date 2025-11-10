@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="<%= class_names(dark: true) %>" lang="<%= I18n.locale %>">
+<html class="dark" lang="<%= I18n.locale %>">
   <head>
     <title><%= content_for(:title)  || "Tim Whitacre" %></title>
     <% if content_for?(:description) %>
@@ -22,6 +22,10 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+
     <%= yield %>
+
+    <%= render "layouts/footer" %>
   </body>
 </html>

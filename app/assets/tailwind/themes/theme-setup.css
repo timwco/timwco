@@ -34,12 +34,17 @@
 }
 
 /* Body Setup */
+html {
+  transition: background-color 0.2s ease;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
-  position: relative;  
+  position: relative;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 body::before {
   content: "";
@@ -58,7 +63,7 @@ body::before {
 /* Typography */
 
 h1 {
-  @apply text-5xl md:text-6xl font-bold mb-4 tracking-tight text-black dark:text-white;
+  @apply text-3xl md:text-4xl font-bold mb-4 tracking-tight text-black dark:text-white;
 }
 
 h2 {
