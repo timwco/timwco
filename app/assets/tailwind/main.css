@@ -103,4 +103,22 @@ p {
   a {
     @apply text-primary hover:underline;
   }
+  ul {
+    @apply list-disc list-inside mb-8;
+  }
+  pre {
+    @apply bg-gray-400 p-4 rounded-lg mb-8 text-gray-900;
+  }
+  code {
+    @apply bg-gray-400 rounded-md text-gray-900;
+  }
+  blockquote {
+    @apply border-l-4 border-gray-300 pl-4 mb-8;
+  }
+  table {
+    @apply w-full mb-8;
+  }
+  th, td {
+    @apply border border-gray-300 p-2;
+  }
 }
