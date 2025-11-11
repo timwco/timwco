@@ -11,6 +11,12 @@ module MarkdownHelper
     end
   end
 
+  def render_content_date(key)
+    content = Content.find_by(key: key)
+    return { updated_at: "", created_at: "" } unless content
+    { updated_at: content.updated_at.strftime("%B %d, %Y"), created_at: content.created_at.strftime("%B %d, %Y") }
+  end
+
   # For on-demand rendering if needed
   def markdown(text)
     return "" if text.blank?

@@ -2,119 +2,32 @@
 <% content_for :description, "I help organizations turn ambitious ideas into reality, from AI strategy and implementation to full-stack architecture that actually ships" %>
 
 <!-- Hero Section -->
-<section class="mb-32">
+<section class="mb-24">
   <h1 class="mb-6 leading-13">
     <%= render_content("hero") %>
   </h1>
 </section>
 
 <!-- About Section -->
-<section class="mb-32">
-  <h2>About</h2>
+<section class="mb-24">
+  <h2>About Me</h2>
 
   <div class="space-y-6">
     <%= render_content("about") %>
   </div>
 </section>
 
-<!-- Work/Projects Section -->
-<section class="mb-32">
-  <h2>Selected Work</h2>
-
-  <div class="space-y-12">
-    <!-- Project 1 -->
-    <article class="group cursor-pointer">
-      <div class="mb-4">
-        <h3>Project Alpha</h3>
-        <p class="text-sm text-primary">
-          2024 • Web Application
-        </p>
-      </div>
-      <p class="text-base text-content-light">
-        A modern platform for team collaboration featuring real-time updates,
-        seamless file sharing, and intelligent workflow automation.
-      </p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="badge">
-          Rails
-        </span>
-        <span class="badge">
-          TailwindCSS
-        </span>
-        <span class="badge">
-          JavaScript
-        </span>
-      </div>
-    </article>
-
-    <!-- Project 2 -->
-    <article class="group cursor-pointer">
-      <div class="mb-4">
-        <h3>Design System Pro</h3>
-        <p class="text-sm text-primary">
-          2023 • Design System
-        </p>
-      </div>
-      <p class="text-base text-content-light">
-        Comprehensive design system and component library for enterprise
-        applications, ensuring consistency across multiple products.
-      </p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="badge">
-          React
-        </span>
-        <span class="badge">
-          TypeScript
-        </span>
-        <span class="badge">
-          Storybook
-        </span>
-      </div>
-    </article>
-
-    <!-- Project 3 -->
-    <article class="group cursor-pointer">
-      <div class="mb-4">
-        <h3>Analytics Dashboard</h3>
-        <p class="text-sm text-primary">
-          2023 • Data Visualization
-        </p>
-      </div>
-      <p class="text-base text-content-light">
-        Real-time analytics platform with custom visualizations, helping
-        teams make data-driven decisions with confidence.
-      </p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="badge">
-          Vue.js
-        </span>
-        <span class="badge">
-          D3.js
-        </span>
-        <span class="badge">
-          Node.js
-        </span>
-      </div>
-    </article>
-  </div>
-</section>
 
 <!-- Contact Section -->
 <section class="mb-20">
   <h2>Get In Touch</h2>
 
   <div class="space-y-6">
-    <p class="text-xl">
-      I'm always interested in hearing about new projects and opportunities.
-      Whether you have a question or just want to say hi, feel free to reach out.
-    </p>
+    <%= render_content("contact") %> 
 
-    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-      <a href="mailto:hello@example.com" class="button">
-        Send an Email
-      </a>
-      <a href="https://twitter.com/yourusername" class="button-alternate">
-        Follow on Twitter
+    <div class="pt-4">
+      <a href="mailto:tim@sunsetlabs.io" class="button">
+        Let's Connect
       </a>
     </div>
 

@@ -1,0 +1,28 @@
+<% content_for :title, "Tim Whitacre - Now" %>
+<% content_for :description, "Now page" %>
+
+<section class="mb-24">
+  <h2>What I'm Doing Now</h2>
+  <div class="space-y-6">
+    <%= render_content("now") %>
+  </div>
+  <p class="text-sm text-gray-500 mb-2">Last updated: <%= render_content_date("now")[:updated_at] %></p>
+  <p class="text-sm text-gray-500 italic">(This is a <a class="link muted" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a> I'm using to track my current projects and activities)</p>
+</section>
+
+<section class="mb-24">
+  <h2>Currently Reading</h2>
+  <div class="space-y-6">
+    <% if currently_reading.present? && currently_reading.count > 0 %>
+      <% currently_reading.each do |book| %>
+        <% $date = book['book']['publication_year'] ? book['book']['publication_year'] : '2020'%>
+        <div class="flex items-center gap-4">
+          <%= link_to book['book']['title'], book['book']['link'], class: "underlined", target: "_blank" %> 
+          <time class="code"><%= $date %></time> <!-- TODO: Make this a tag -->
+        </div>
+      <% end %>
+    <% else %>
+      <li>I'm more into TikTok these days 😏</li>
+    <% end %>
+  </div>
+</section>

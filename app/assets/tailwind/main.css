@@ -59,6 +59,12 @@ body::before {
   inset: 0;
 }
 
+/* Core Elements */
+header {
+  background-color: var(--base-bg-lowest); 
+  border-color: var(--base-border-tertiary);
+}
+
 
 /* Typography */
 
@@ -74,13 +80,6 @@ h3 {
   @apply text-2xl font-semibold mb-2 transition-colors;
 }
 
-p {
-  @apply text-lg leading-[1.7];
-  &.larger {
-    @apply text-xl md:text-2xl leading-[1.6];
-  }
-}
-
 /* Elements */
 .badge {
   @apply px-3 py-1 text-xs rounded-full text-primary-300 bg-on-background;
@@ -94,9 +93,19 @@ p {
   @apply inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all bg-on-background;
 }
 
+.link {
+  @apply text-primary hover:underline;
+  &.muted {
+    @apply text-primary-600 hover:underline;
+  }
+}
+
 
 /* Content */
 .content {
+  h2,h3 {
+    @apply mb-8;
+  }
   p {
     @apply text-lg leading-[1.7] mb-8;
   }
@@ -104,7 +113,7 @@ p {
     @apply text-primary hover:underline;
   }
   ul {
-    @apply list-disc list-inside mb-8;
+    @apply list-disc list-inside mb-8 pl-4;
   }
   pre {
     @apply bg-gray-400 p-4 rounded-lg mb-8 text-gray-900;
