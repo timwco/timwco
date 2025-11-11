@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :madmin do
+    resources :contents
+  end
   draw :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
