@@ -1,0 +1,14 @@
+<% content_for :title, "Tim Whitacre - Music" %>
+<% content_for :description, "Some of my favorite music" %>
+
+<section class="mb-24">
+  <h2>My Favorite Music</h2>
+  <div class="space-y-6">
+    <p>The following albums I consider to be perfect in every way.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <% album = SpotifyService.new.get_album("2KYHW0qffmoyIQe9JibNIu") %>
+    <% raise %>
+  </div>
+
+</section>
