@@ -13,16 +13,17 @@
 <section class="mb-24">
   <h2>Currently Reading</h2>
   <div class="space-y-6">
+    <ul class="list-disc list-inside mb-8 pl-4">
     <% if currently_reading.present? && currently_reading.count > 0 %>
       <% currently_reading.each do |book| %>
-        <% $date = book['book']['publication_year'] ? book['book']['publication_year'] : '2020'%>
-        <div class="flex items-center gap-4">
-          <%= link_to book['book']['title'], book['book']['link'], class: "underlined", target: "_blank" %> 
-          <time class="code"><%= $date %></time> <!-- TODO: Make this a tag -->
-        </div>
+        <li class="items-center gap-4 mb-4 list-item">
+          <%= link_to book_title(book), book['book']['link'], class: "hover:underline hover:text-primary", target: "_blank" %> 
+          <time class="badge"><%= pub_year(book) %></time>
+        </li>
       <% end %>
     <% else %>
       <li>I'm more into TikTok these days 😏</li>
     <% end %>
+    </ul>
   </div>
 </section>
