@@ -21,21 +21,9 @@
           Other Things 
         </p>
         <nav class="flex flex-col gap-2" aria-label="Footer navigation">
-          <a href="/music"
-             class="text-sm transition-opacity hover:opacity-70"
-             style="color: var(--base-text-secondary);">
-            Music
-          </a>
-          <a href="/links"
-             class="text-sm transition-opacity hover:opacity-70"
-             style="color: var(--base-text-secondary);">
-            Links
-          </a>
-          <a href="/prompts"
-             class="text-sm transition-opacity hover:opacity-70"
-             style="color: var(--base-text-secondary);">
-            Prompts
-          </a>
+          <%= nav_link(music_path, "Music") %>
+          <%= nav_link(links_path, "Links") %>
+          <%= nav_link(tools_path, "Tools") %>
         </nav>
       </div>
 

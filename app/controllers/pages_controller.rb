@@ -15,6 +15,9 @@ class PagesController < ApplicationController
   def book
   end
 
+  def tools
+  end
+
   def music
     @albums = Album.order(:title)
   end

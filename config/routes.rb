@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # Pages
   get "now" => "pages#now", as: :now
   get "links" => "pages#links", as: :links
+  get "tools" => "pages#tools", as: :tools
   get "thoughts" => "pages#thoughts", as: :thoughts
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
