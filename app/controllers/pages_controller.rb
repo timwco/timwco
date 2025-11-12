@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   end
 
   def music
+    @albums = Album.order(:title)
   end
 
   def wishlist

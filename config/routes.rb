@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :madmin do
+    resources :albums
     resources :contents
   end
   draw :admin
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   get "now" => "pages#now", as: :now
   get "links" => "pages#links", as: :links
   get "thoughts" => "pages#thoughts", as: :thoughts
-  get "projects" => "pages#projects", as: :projects
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
   get "wishlist" => "pages#wishlist", as: :wishlist
