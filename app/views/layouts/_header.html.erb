@@ -11,31 +11,11 @@
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="/"
-           class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          About
-        </a>
-        <a href="/now"
-           class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          Now
-        </a>
-        <a href="/projects"
-           class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          Projects 
-        </a>
-        <a href="/thoughts"
-           class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          Thoughts
-        </a>
-        <a href="/book"
-           class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          Book
-        </a>
+        <%= nav_link(root_path, "About") %>
+        <%= nav_link(now_path, "Now") %>
+        <%= nav_link(projects_path, "Projects") %>
+        <%= nav_link(thoughts_path, "Thoughts") %>
+        <%= nav_link(book_path, "Book") %>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -56,29 +36,29 @@
          class="hidden md:hidden mt-4 pt-4 border-t"
          style="border-color: var(--base-border-tertiary);">
       <div class="flex flex-col gap-4">
-        <a href="/about"
+        <a href="/"
            class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
+           style="color: var(<%= current_page?(root_path) ? '--color-secondary-500' : '--base-text-secondary' %>);">
           About
         </a>
         <a href="/now"
            class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
+           style="color: var(<%= current_page?(now_path) ? '--color-secondary-500' : '--base-text-secondary' %>);">
           Now
         </a>
-        <a href="/links"
+        <a href="/projects"
            class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
-          Links
+           style="color: var(<%= current_page?(projects_path) ? '--color-secondary-500' : '--base-text-secondary' %>);">
+          Projects
         </a>
         <a href="/thoughts"
            class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
+           style="color: var(<%= current_page?(thoughts_path) ? '--color-secondary-500' : '--base-text-secondary' %>);">
           Thoughts
         </a>
         <a href="/book"
            class="text-sm transition-opacity hover:opacity-70"
-           style="color: var(--base-text-secondary);">
+           style="color: var(<%= current_page?(book_path) ? '--color-secondary-500' : '--base-text-secondary' %>);">
           Book
         </a>
       </div>
