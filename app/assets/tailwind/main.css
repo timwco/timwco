@@ -86,18 +86,21 @@ h3 {
 }
 
 .button {
-  @apply inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all bg-primary-700 text-white;
+  @apply inline-flex items-center px-3 py-1.5 rounded-lg transition-all bg-primary-700 text-white text-sm;
+  &:hover {
+    @apply bg-primary-600;
+  }
 }
 
 .button-alternate {
-  @apply inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all bg-on-background;
+  @apply inline-flex items-center px-3 py-1.5 rounded-lg transition-all bg-on-background text-sm;
 }
 
 .link {
-  @apply text-primary hover:underline;
-  &.muted {
-    @apply text-primary-600 hover:underline;
-  }
+  @apply text-primary-600 hover:underline;
+}
+.link-muted {
+  @apply hover:text-primary-600 hover:underline;
 }
 
 
@@ -110,7 +113,7 @@ h3 {
     @apply text-lg leading-[1.7] mb-8;
   }
   a {
-    @apply text-primary hover:underline;
+    @apply text-primary-600 hover:underline;
   }
   ul {
     @apply list-disc list-inside mb-8 pl-4;

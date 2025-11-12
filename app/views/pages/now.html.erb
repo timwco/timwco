@@ -7,7 +7,7 @@
     <%= render_content("now") %>
   </div>
   <p class="text-sm text-gray-500 mb-2">Last updated: <%= render_content_date("now")[:updated_at] %></p>
-  <p class="text-sm text-gray-500 italic">(This is a <a class="link muted" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a> I'm using to track my current projects and activities)</p>
+  <p class="text-sm text-gray-500 italic">(This is a <a class="link" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a> I'm using to track my current projects and activities)</p>
 </section>
 
 <section class="mb-24">
@@ -17,7 +17,7 @@
     <% if currently_reading.present? && currently_reading.count > 0 %>
       <% currently_reading.each do |book| %>
         <li class="items-center gap-4 mb-4 list-item">
-          <%= link_to book_title(book), book['book']['link'], class: "hover:underline hover:text-primary", target: "_blank" %> 
+          <%= link_to book_title(book), book['book']['link'], class: "link-muted", target: "_blank" %> 
           <time class="badge"><%= pub_year(book) %></time>
         </li>
       <% end %>

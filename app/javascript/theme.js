@@ -24,9 +24,21 @@ class ThemeManager {
 
     if (theme === THEMES.SYSTEM) {
       const systemTheme = this.getSystemTheme();
-      html.classList.toggle('dark', systemTheme === THEMES.DARK);
+      if (systemTheme === THEMES.DARK) {
+        html.classList.remove('light');
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+      }
     } else {
-      html.classList.toggle('dark', theme === THEMES.DARK);
+      if (theme === THEMES.DARK) {
+        html.classList.remove('light');
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+      }
     }
 
     localStorage.setItem(THEME_KEY, theme);
@@ -90,11 +102,28 @@ class ThemeManager {
 }
 
 // Initialize theme manager when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new ThemeManager());
-} else {
-  new ThemeManager();
+let themeManager = null;
+
+function initializeThemeManager() {
+  // Only create one instance
+  if (!themeManager) {
+    themeManager = new ThemeManager();
+  } else {
+    // Reinitialize on navigation
+    themeManager.initTheme();
+    themeManager.attachListeners();
+  }
 }
+
+// Handle both initial load and Turbo navigation
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeThemeManager);
+} else {
+  initializeThemeManager();
+}
+
+// Reinitialize after Turbo navigation
+document.addEventListener('turbo:load', initializeThemeManager);
 
 // Also run immediately to prevent flash
 (function() {
@@ -105,8 +134,20 @@ if (document.readyState === 'loading') {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
       ? THEMES.DARK
       : THEMES.LIGHT;
-    html.classList.toggle('dark', systemTheme === THEMES.DARK);
+    if (systemTheme === THEMES.DARK) {
+      html.classList.remove('light');
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+      html.classList.add('light');
+    }
   } else {
-    html.classList.toggle('dark', savedTheme === THEMES.DARK);
+    if (savedTheme === THEMES.DARK) {
+      html.classList.remove('light');
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+      html.classList.add('light');
+    }
   }
 })();
