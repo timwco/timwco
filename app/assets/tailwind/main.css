@@ -134,3 +134,41 @@ h3 {
     @apply border border-gray-300 p-2;
   }
 }
+
+/* Markdown Image Utilities */
+.img-full {
+  @apply w-full h-auto rounded-lg shadow-lg mb-8;
+}
+
+.img-centered {
+  @apply max-w-2xl mx-auto block rounded-lg shadow-lg mb-8;
+}
+
+.img-hero {
+  @apply w-full h-auto rounded-2xl shadow-2xl mb-12;
+}
+
+.img-thumbnail {
+  @apply w-32 h-32 object-cover rounded-lg shadow-md;
+}
+
+.img-float-right {
+  @apply block md:float-right md:ml-6 mb-4 max-w-sm rounded-lg shadow-lg;
+}
+
+.img-float-left {
+  @apply block md:float-left md:mr-6 mb-4 max-w-sm rounded-lg shadow-lg;
+}
+
+/* Image Sizes */
+.img-size-small {
+  @apply w-auto h-32 object-cover rounded-lg shadow-md;
+}
+
+.img-size-medium {
+  @apply w-auto h-64 object-cover rounded-lg shadow-md;
+}
+
+.img-size-large {
+  @apply w-auto h-96 object-cover rounded-lg shadow-md;
+}

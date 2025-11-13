@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :madmin do
+    resources :assets
     resources :albums
     resources :contents
   end
