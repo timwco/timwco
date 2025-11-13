@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :assets
     resources :albums
     resources :contents
+    resources :posts
   end
   draw :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,11 +23,15 @@ Rails.application.routes.draw do
   get "now" => "pages#now", as: :now
   get "links" => "pages#links", as: :links
   get "tools" => "pages#tools", as: :tools
-  get "thoughts" => "pages#thoughts", as: :thoughts
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
   get "wishlist" => "pages#wishlist", as: :wishlist
 
-
   get "styleguide" => "pages#styleguide", as: :styleguide
+
+  # Blog routes
+  get "thoughts" => "posts#index", as: :thoughts
+
+  # Catch-all route for blog posts (must be last!)
+  get ":slug" => "posts#show", as: :post, constraints: { slug: /[a-z0-9-]+/ }
 end

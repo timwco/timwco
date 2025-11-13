@@ -1,0 +1,45 @@
+<% content_for :title, "Tim Whitacre - Thoughts" %>
+<% content_for :description, "My thoughts on software, design, and building things" %>
+
+<section class="mb-24">
+  <h2>Thoughts</h2>
+  <div class="space-y-12 mt-12">
+    <% @posts.each do |post| %>
+      <article class="border-b pb-8" style="border-color: var(--base-border-tertiary);">
+        <% if post.featured_image&.file&.attached? %>
+          <%= link_to post_path(post.slug) do %>
+            <img src="<%= post.featured_image.url %>"
+                 alt="<%= post.title %>"
+                 class="w-full h-64 object-cover rounded-lg mb-6 transition-opacity hover:opacity-80">
+          <% end %>
+        <% end %>
+
+        <div class="flex items-center gap-4 mb-4 text-sm" style="color: var(--base-text-tertiary);">
+          <time datetime="<%= post.published_date %>">
+            <%= post.published_date.strftime('%B %d, %Y') %>
+          </time>
+          <span>•</span>
+          <span><%= post.estimated_reading_time %> min read</span>
+        </div>
+
+        <h3 class="mb-4">
+          <%= link_to post.title, post_path(post.slug), class: "hover:text-primary transition-colors", style: "color: var(--base-text);" %>
+        </h3>
+
+        <% if post.abstract.present? %>
+          <p class="text-lg mb-4" style="color: var(--base-text-secondary);">
+            <%= post.abstract %>
+          </p>
+        <% end %>
+
+        <%= link_to "Read more →", post_path(post.slug), class: "link" %>
+      </article>
+    <% end %>
+
+    <% if @posts.empty? %>
+      <p class="text-center py-12" style="color: var(--base-text-secondary);">
+        No posts yet. Check back soon!
+      </p>
+    <% end %>
+  </div>
+</section>

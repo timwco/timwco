@@ -1,5 +1,6 @@
 class Asset < ApplicationRecord
   has_one_attached :file
+  has_many :posts, foreign_key: :featured_image_id, dependent: :nullify
 
   validates :title, presence: true
   validates :filename, presence: true, uniqueness: true
