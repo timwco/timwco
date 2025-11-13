@@ -1,0 +1,1 @@
+<%= form.select field.attribute_name, Asset.all.order(created_at: :desc).map { |asset| [asset.title, asset.id] }, { include_blank: "No featured image" }, { data: { controller: "select" } } %>

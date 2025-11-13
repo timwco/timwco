@@ -17,6 +17,17 @@ class Post < ApplicationRecord
   scope :published, -> { where('published_date <= ?', Date.today).where.not(published_date: nil) }
   default_scope { order(published_date: :desc, created_at: :desc) }
 
+  # Override featured_image setter to handle form values (string IDs or objects)
+  def featured_image=(value)
+    if value.is_a?(String)
+      # Form sends string IDs - set the foreign key directly
+      self.featured_image_id = value.presence
+    else
+      # Asset object or nil - use normal assignment
+      super(value)
+    end
+  end
+
   private
 
   # Render markdown content to HTML

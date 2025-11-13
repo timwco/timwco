@@ -2,7 +2,7 @@ class ContentResource < Madmin::Resource
   # Define which attributes to show
   attribute :id, form: false, index: false
   attribute :key, index: true
-  attribute :content
+  attribute :content, field: ContentField
   attribute :raw_text
   attribute :created_at, form: false
   attribute :updated_at, form: false

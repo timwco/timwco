@@ -60,7 +60,7 @@ body::before {
 }
 
 /* Core Elements */
-header {
+.site-header {
   background-color: var(--base-bg-lowest); 
   border-color: var(--base-border-tertiary);
 }
@@ -77,7 +77,7 @@ h2 {
 }
 
 h3 {
-  @apply text-2xl font-semibold mb-2 transition-colors;
+  @apply text-2xl font-semibold mb-2 transition-colors text-secondary;
 }
 
 /* Elements */
@@ -106,6 +106,10 @@ h3 {
 
 /* Content */
 .content {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   h2,h3 {
     @apply mb-8;
   }
@@ -122,7 +126,7 @@ h3 {
     @apply bg-gray-400 p-4 rounded-lg mb-8 text-gray-900;
   }
   code {
-    @apply bg-gray-400 rounded-md text-gray-900;
+    @apply bg-gray-400 p-4 flex w-full rounded-md text-gray-900;
   }
   blockquote {
     @apply border-l-4 border-gray-300 pl-4 mb-8;

@@ -4,10 +4,10 @@ class PostResource < Madmin::Resource
   attribute :title, index: true
   attribute :slug, index: true
   attribute :abstract
-  attribute :content
+  attribute :content, field: ContentField
   attribute :published_date, index: true
   attribute :estimated_reading_time, form: false, index: true
-  attribute :featured_image, index: false
+  attribute :featured_image, index: false, field: FeaturedImageField
   attribute :created_at, form: false, index: false
   attribute :updated_at, form: false, index: false
   attribute :rendered_html, form: false, index: false

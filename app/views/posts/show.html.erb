@@ -3,29 +3,53 @@
 
 <article class="max-w-4xl mx-auto">
   <% if @post.featured_image&.file&.attached? %>
-    <img src="<%= @post.featured_image.url %>"
-         alt="<%= @post.title %>"
-         class="w-full h-96 object-cover rounded-2xl shadow-2xl mb-12">
-  <% end %>
+    <!-- Featured image with overlay header -->
+    <div class="relative mb-12 rounded-2xl overflow-hidden shadow-2xl">
+      <!-- Background image -->
+      <img src="<%= @post.featured_image.url %>"
+           alt="<%= @post.title %>"
+           class="w-full h-96 object-cover">
 
-  <header class="mb-12">
-    <div class="flex items-center gap-4 mb-6 text-sm" style="color: var(--base-text-tertiary);">
-      <time datetime="<%= @post.published_date %>">
-        <%= @post.published_date.strftime('%B %d, %Y') %>
-      </time>
-      <span>•</span>
-      <span><%= @post.estimated_reading_time %> min read</span>
+      <!-- Centered header content -->
+      <header class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center max-w-3xl px-6">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg">
+              <time datetime="<%= @post.published_date %>" class="text-sm text-white/90">
+                <%= @post.published_date.strftime('%B %d, %Y') %>
+              </time>
+              <span class="text-white/70 mx-2">•</span>
+              <span class="text-sm text-white/90"><%= @post.estimated_reading_time %> min read</span>
+            </div>
+          </div>
+
+          <div class="bg-black/60 backdrop-blur-sm px-6 py-4 rounded-lg mb-6 inline-block">
+            <h1 class="text-white mb-0" style="margin-bottom: 0;"><%= @post.title %></h1>
+          </div>
+        </div>
+      </header>
     </div>
+  <% else %>
+    <!-- No featured image - standard header layout -->
+    <header class="mb-12">
+      <div class="flex items-center gap-4 mb-4 text-sm px-4 pt-4" style="color: var(--base-text-tertiary);">
+        <time datetime="<%= @post.published_date %>">
+          <%= @post.published_date.strftime('%B %d, %Y') %>
+        </time>
+        <span>•</span>
+        <span><%= @post.estimated_reading_time %> min read</span>
+      </div>
 
-    <h1 class="mb-6"><%= @post.title %></h1>
+      <h1 class="mb-6 px-4"><%= @post.title %></h1>
 
-    <% if @post.abstract.present? %>
-      <p class="text-xl mb-8 leading-relaxed" style="color: var(--base-text-secondary);">
-        <%= @post.abstract %>
-      </p>
-      <hr class="border-t mb-12" style="border-color: var(--base-border-tertiary);">
-    <% end %>
-  </header>
+      <% if @post.abstract.present? %>
+        <p class="text-xl mb-4 leading-relaxed px-4" style="color: var(--base-text-secondary);">
+          <%= @post.abstract %>
+        </p>
+        <hr class="border-t mb-12" style="border-color: var(--base-border-tertiary);">
+      <% end %>
+    </header>
+  <% end %>
 
   <div class="content">
     <%= @post.rendered_html.html_safe %>
