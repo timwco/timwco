@@ -3,51 +3,23 @@
 
 <article class="mx-auto">
   <% if @post.featured_image&.file&.attached? %>
-    <!-- Featured image with overlay header -->
-    <div class="relative mb-12 rounded-2xl overflow-hidden shadow-2xl">
+    <!-- Featured image with title overlay -->
+    <div class="relative mb-12 rounded-md overflow-hidden shadow-2xl">
       <!-- Background image -->
       <img src="<%= @post.featured_image.url %>"
            alt="<%= @post.title %>"
            class="w-full h-96 object-cover">
 
-      <!-- Centered header content -->
-      <header class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center max-w-3xl px-6">
-          <%= link_to @post.category.name, category_path(@post.category.slug),
-              class: "inline-block px-3 py-1 text-xs rounded mb-4 transition-colors hover:bg-primary-600",
-              style: "background-color: var(--color-primary-700); color: var(--color-white);" %>
-
-          <div class="flex items-center justify-center gap-4 mb-6">
-            <div class="bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg">
-              <time datetime="<%= @post.published_date %>" class="text-sm text-white/90">
-                <%= @post.published_date.strftime('%B %d, %Y') %>
-              </time>
-              <span class="text-white/70 mx-2">•</span>
-              <span class="text-sm text-white/90"><%= @post.estimated_reading_time %> min read</span>
-            </div>
-          </div>
-
-          <div class="bg-black/60 backdrop-blur-sm px-6 py-4 rounded-lg mb-6 inline-block">
-            <h1 class="text-white mb-0" style="margin-bottom: 0;"><%= @post.title %></h1>
-          </div>
+      <!-- Title in bottom left -->
+      <header class="absolute bottom-0 left-0 p-8">
+        <div class="bg-black/60 backdrop-blur-sm px-6 py-4 rounded-md inline-block">
+          <h1 class="text-white mb-0 text-4xl" style="margin-bottom: 0;"><%= @post.title %></h1>
         </div>
       </header>
     </div>
   <% else %>
     <!-- No featured image - standard header layout -->
     <header class="mb-12">
-      <%= link_to @post.category.name, category_path(@post.category.slug),
-          class: "inline-block px-3 py-1 text-xs rounded mb-4 transition-colors hover:bg-primary-600 mx-4",
-          style: "background-color: var(--color-primary-700); color: var(--color-white);" %>
-
-      <div class="flex items-center gap-4 mb-4 text-sm px-4" style="color: var(--base-text-tertiary);">
-        <time datetime="<%= @post.published_date %>">
-          <%= @post.published_date.strftime('%B %d, %Y') %>
-        </time>
-        <span>•</span>
-        <span><%= @post.estimated_reading_time %> min read</span>
-      </div>
-
       <h1 class="mb-6 px-4"><%= @post.title %></h1>
 
       <% if @post.abstract.present? %>
@@ -59,11 +31,145 @@
     </header>
   <% end %>
 
-  <div class="content">
-    <%= @post.rendered_html.html_safe %>
+  <div class="flex flex-col md:flex-row gap-12">
+    <!-- Main content -->
+    <div class="flex-1 content">
+      <%= @post.rendered_html.html_safe %>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="w-full md:w-56 flex-shrink-0 sticky top-24 self-start border-1 post-sidebar p-4">
+      <div class="space-y-6">
+        <!-- Post metadata -->
+        <div class="space-y-4">
+          <h3 class="text-sm font-semibold uppercase tracking-wide" style="color: var(--base-text);">Post Info</h3>
+
+          <div class="space-y-3 text-sm">
+            <div>
+              <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--base-text-tertiary);">Date Posted</p>
+              <time datetime="<%= @post.published_date %>" style="color: var(--base-text-secondary);">
+                <%= @post.published_date.strftime('%B %d, %Y') %>
+              </time>
+            </div>
+
+            <div>
+              <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--base-text-tertiary);">Category</p>
+              <%= link_to @post.category.name, category_path(@post.category.slug),
+                  class: "inline-block text-sm rounded text-black dark:text-white hover:underline hover:text-primary" %>
+            </div>
+
+            <div>
+              <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--base-text-tertiary);">Reading Time</p>
+              <p style="color: var(--base-text-secondary);"><%= @post.estimated_reading_time %> min read</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Share section -->
+        <div class="space-y-4 pt-6 border-t" style="border-color: var(--base-border-tertiary);">
+          <h3 class="text-sm font-semibold uppercase tracking-wide" style="color: var(--base-text);">Share</h3>
+
+          <div class="flex flex-col gap-2">
+            <a id="copyUrlBtn"
+               href="javascript:void(0)"
+               onclick="copyUrl()"
+               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+              <span id="copyUrlText">Copy Link</span>
+            </a>
+
+            <a href="javascript:void(0)"
+               onclick="openAiModal()"
+               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+              Summarize
+            </a>
+
+            <a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(@post.title) %>&url=<%= CGI.escape(request.original_url) %>"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+              Share on X
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <footer class="mt-16 pt-8 border-t" style="border-color: var(--base-border-tertiary);">
     <%= link_to "← Back to all thoughts", thoughts_path, class: "link" %>
   </footer>
 </article>
+
+<!-- AI Summarize Modal -->
+<%= render "partials/ai_modal" %>
+
+<script>
+  function copyUrl() {
+    const url = window.location.href;
+    const btn = document.getElementById('copyUrlBtn');
+    const textSpan = document.getElementById('copyUrlText');
+    const originalText = textSpan.textContent;
+
+    // Try modern clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        showCopiedFeedback(textSpan, originalText);
+      }).catch(() => {
+        // Fallback if clipboard API fails
+        fallbackCopy(url, textSpan, originalText);
+      });
+    } else {
+      // Use fallback for older browsers
+      fallbackCopy(url, textSpan, originalText);
+    }
+  }
+
+  function fallbackCopy(text, textSpan, originalText) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      document.execCommand('copy');
+      showCopiedFeedback(textSpan, originalText);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+
+  function showCopiedFeedback(textSpan, originalText) {
+    textSpan.textContent = 'Copied!';
+    setTimeout(() => {
+      textSpan.textContent = originalText;
+    }, 2000);
+  }
+
+  function openAiModal() {
+    document.getElementById('aiModal').classList.remove('hidden');
+  }
+
+  function closeAiModal() {
+    document.getElementById('aiModal').classList.add('hidden');
+  }
+
+  // Close modal when clicking outside
+  document.getElementById('aiModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeAiModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAiModal();
+    }
+  });
+</script>

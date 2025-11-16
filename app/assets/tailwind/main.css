@@ -68,6 +68,10 @@ body::before {
   background-color: var(--base-bg-lowest); 
   border-color: var(--base-border-tertiary);
 }
+.post-sidebar {
+  background-color: var(--base-bg-lowest); 
+  border-color: var(--base-border-tertiary);
+}
 
 
 /* Typography */
