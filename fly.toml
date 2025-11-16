@@ -12,11 +12,13 @@ console_command = '/rails/bin/rails console'
   release_command = './bin/rails db:migrate'
 
 [env]
+  PORT = '8080'
+  BINDING = '0.0.0.0'
   RAILS_LOG_LEVEL = 'info'
   RAILS_SERVE_STATIC_FILES = 'true'
 
 [http_service]
-  internal_port = 80
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true

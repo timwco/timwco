@@ -1,0 +1,25 @@
+# Thruster configuration for production deployment
+# See: https://github.com/basecamp/thruster
+
+# HTTP server configuration
+http_port: 8080
+target_port: 3000
+
+# Bind to all interfaces for Fly.io
+bind: "0.0.0.0"
+
+# Cache configuration
+cache:
+  enabled: true
+  path: "/rails/tmp/cache/thruster"
+  max_size: "64m"
+
+# X-Sendfile support for serving files from disk
+x_sendfile:
+  enabled: true
+
+# Force SSL redirect (Fly.io terminates SSL, but we want HTTPS)
+force_ssl: false
+
+# Debug mode (set to false in production)
+debug: false
