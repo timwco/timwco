@@ -89,8 +89,8 @@
   --base-bg-highest: var(--color-gray-300);
   --base-bg-high: var(--color-gray-100);
   --base-bg-base: var(--color-gray-50);
-  --base-bg-low: var(--color-white);
-  --base-bg-lowest: var(--color-gray-50);
+  --base-bg-low: var(--color-gray-100);
+  --base-bg-lowest: var(--color-gray-100);
   --base-border-primary: var(--color-gray-500);
   --base-border-secondary: var(--color-gray-400);
   --base-border-tertiary: var(--color-gray-300);

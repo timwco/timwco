@@ -28,10 +28,12 @@ Rails.application.routes.draw do
   get "music" => "pages#music", as: :music
   get "wishlist" => "pages#wishlist", as: :wishlist
 
-  get "styleguide" => "pages#styleguide", as: :styleguide
-
   # Blog routes
   get "thoughts" => "posts#index", as: :thoughts
+
+  # Redirects (301 permanent)
+  get "blog", to: redirect("/thoughts", status: 301)
+  get "about", to: redirect("/", status: 301)
 
   # Category route (checked first - takes precedence over post slugs)
   get ":slug" => "categories#show", as: :category,

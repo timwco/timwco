@@ -55,7 +55,7 @@
             <div>
               <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--base-text-tertiary);">Category</p>
               <%= link_to @post.category.name, category_path(@post.category.slug),
-                  class: "inline-block text-sm rounded text-black dark:text-white hover:underline hover:text-primary" %>
+                  class: "inline-block text-sm rounded text-black dark:text-white hover:underline hover:text-secondary dark:hover:text-primary" %>
             </div>
 
             <div>
@@ -73,20 +73,20 @@
             <a id="copyUrlBtn"
                href="javascript:void(0)"
                onclick="copyUrl()"
-               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+               class="text-sm rounded hover:text-secondary dark:hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
               <span id="copyUrlText">Copy Link</span>
             </a>
 
             <a href="javascript:void(0)"
                onclick="openAiModal()"
-               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+               class="text-sm rounded hover:text-secondary dark:hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
               Summarize
             </a>
 
             <a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(@post.title) %>&url=<%= CGI.escape(request.original_url) %>"
                target="_blank"
                rel="noopener noreferrer"
-               class="text-sm rounded hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
+               class="text-sm rounded hover:text-secondary dark:hover:text-primary text-black dark:text-white cursor-pointer hover:underline">
               Share on X
             </a>
           </div>

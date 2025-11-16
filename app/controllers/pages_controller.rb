@@ -25,7 +25,4 @@ class PagesController < ApplicationController
   def wishlist
   end
 
-  def styleguide
-  end
-
 end

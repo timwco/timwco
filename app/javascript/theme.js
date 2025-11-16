@@ -63,11 +63,21 @@ class ThemeManager {
       const isActive = theme === activeTheme;
 
       if (isActive) {
-        button.style.backgroundColor = 'var(--color-primary-700)';
-        button.style.color = 'var(--color-white)';
+        button.classList.add('bg-secondary-700');
+        button.classList.add('text-white');
+        button.classList.add('dark:bg-primary-700');
+        button.classList.add('dark:text-white');
+        // Remove Inactive Classes
+        button.classList.remove('bg-gray-button');
+        button.classList.remove('text-black');
       } else {
-        button.style.backgroundColor = 'var(--base-bg-base)';
-        button.style.color = 'var(--base-text-secondary)';
+        button.classList.add('bg-gray-button');
+        button.classList.add('text-black');
+        // Remove Active Classes
+        button.classList.remove('bg-secondary-700');
+        button.classList.remove('text-white');
+        button.classList.remove('dark:bg-primary-700');
+        button.classList.remove('dark:text-white');
       }
     });
   }
