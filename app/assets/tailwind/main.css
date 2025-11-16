@@ -31,6 +31,10 @@
 
   /* Backgrounds */
   --color-on-background: var(--base-bg-lowest);
+
+  /* Fonts */
+  --font-main: var(--font-body);
+  --font-heading: var(--font-heading-1);
 }
 
 /* Body Setup */
@@ -67,17 +71,15 @@ body::before {
 
 
 /* Typography */
-
-h1 {
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-heading-1);
+}
+h1.heading-1 {
   @apply text-3xl md:text-4xl font-bold mb-4 tracking-tight text-black dark:text-white;
 }
 
-h2 {
-  @apply uppercase mb-8 text-primary tracking-[0.15em];
-}
-
-h3 {
-  @apply text-2xl font-semibold mb-2 transition-colors text-secondary;
+h2.heading-2 {
+  @apply text-xl uppercase mb-8 text-primary tracking-[0.15em];
 }
 
 /* Elements */
@@ -106,7 +108,7 @@ h3 {
 
 /* Content */
 .content {
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

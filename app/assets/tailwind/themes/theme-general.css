@@ -36,14 +36,14 @@
   /* Font families */
   --font-caption: "Kode Mono";
   --font-caption-bold: "Kode Mono";
-  --font-body: "Kode Mono";
-  --font-body-bold: "Kode Mono";
+  --font-body: "Work Sans", sans-serif;
+  --font-body-bold: "Work Sans", sans-serif;
   --font-heading-3: "Kode Mono";
   --font-heading-2: "Kode Mono";
   --font-heading-1: "Kode Mono";
-  --font-monospace-body: monospace;
+  --font-monospace-body: "Kode Mono";
   
-  --font-sans: "Kode Mono", "monospace", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* https://rsms.me/inter/lab */
   --font-sans--font-feature-settings: 'liga', 'cv02', 'cv03', 'cv04', 'cv11';
 

@@ -2,15 +2,15 @@
 <% content_for :description, "Now page" %>
 
 <section class="mb-24">
-  <h2>What I'm Doing Now</h2>
-  <p class="text-xs text-gray-500 mb-6">My <a class="link" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a>. Updated: <%= render_content_date("now")[:updated_at] %></p>  
+  <h2 class="heading-2">What I'm Doing Now</h2>
+  <p class="text-sm italic text-gray-500 mb-6">My <a class="link" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a>. Updated: <%= render_content_date("now")[:updated_at] %></p>  
   <div class="space-y-6">
     <%= render_content("now") %>
   </div>
 </section>
 
 <section class="mb-24">
-  <h2>Currently Reading</h2>
+  <h2 class="heading-2">Currently Reading</h2>
   <div class="space-y-6">
     <ul class="list-disc list-inside mb-8 pl-4">
     <% if currently_reading.present? && currently_reading.count > 0 %>
