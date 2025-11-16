@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   # Associations
+  belongs_to :category
   belongs_to :featured_image, class_name: 'Asset', optional: true
 
   # Validations

@@ -1,0 +1,60 @@
+<% content_for :title, "#{@category.name} - Tim Whitacre" %>
+<% content_for :description, @category.description.presence || "Posts in the #{@category.name} category" %>
+
+<section class="mb-24">
+  <div class="mb-8">
+    <%= link_to "← Back to all thoughts", thoughts_path, class: "link text-sm" %>
+  </div>
+
+  <h2 class="heading-2"><%= @category.name %></h2>
+
+  <% if @category.description.present? %>
+    <p class="text-lg mt-4 mb-12" style="color: var(--base-text-secondary);">
+      <%= @category.description %>
+    </p>
+  <% end %>
+
+  <% if @posts.empty? %>
+    <p class="text-center py-12" style="color: var(--base-text-secondary);">
+      No posts in this category yet.
+    </p>
+  <% else %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <% @posts.each do |post| %>
+        <article class="group">
+          <%= link_to post_path(post.slug), class: "block" do %>
+            <% if post.featured_image&.file&.attached? %>
+              <div class="aspect-video mb-4 overflow-hidden rounded-lg">
+                <img src="<%= post.featured_image.url %>"
+                     alt="<%= post.title %>"
+                     class="w-full h-full object-cover transition-transform group-hover:scale-105">
+              </div>
+            <% else %>
+              <div class="aspect-video mb-4 rounded-lg flex items-center justify-center" style="background-color: var(--base-bg-secondary);">
+                <span class="text-4xl" style="color: var(--base-text-tertiary);">?</span>
+              </div>
+            <% end %>
+
+            <div class="flex items-center gap-3 mb-3 text-xs" style="color: var(--base-text-tertiary);">
+              <time datetime="<%= post.published_date %>">
+                <%= post.published_date.strftime('%b %d, %Y') %>
+              </time>
+              <span>•</span>
+              <span><%= post.estimated_reading_time %> min read</span>
+            </div>
+
+            <h3 class="mb-3 group-hover:text-primary transition-colors" style="color: var(--base-text);">
+              <%= post.title %>
+            </h3>
+
+            <% if post.abstract.present? %>
+              <p class="text-sm line-clamp-3" style="color: var(--base-text-secondary);">
+                <%= post.abstract %>
+              </p>
+            <% end %>
+          <% end %>
+        </article>
+      <% end %>
+    </div>
+  <% end %>
+</section>

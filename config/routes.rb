@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :madmin do
     resources :assets
     resources :albums
+    resources :categories
     resources :contents
     resources :posts
   end
@@ -31,6 +32,10 @@ Rails.application.routes.draw do
 
   # Blog routes
   get "thoughts" => "posts#index", as: :thoughts
+
+  # Category route (checked first - takes precedence over post slugs)
+  get ":slug" => "categories#show", as: :category,
+      constraints: ->(req) { Category.exists?(slug: req.params[:slug]) }
 
   # Catch-all route for blog posts (must be last!)
   get ":slug" => "posts#show", as: :post, constraints: { slug: /[a-z0-9-]+/ }

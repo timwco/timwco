@@ -20,26 +20,21 @@
                      class="w-full h-full object-cover transition-transform group-hover:scale-105">
               </div>
             <% else %>
-              <div class="aspect-video mb-4 rounded-lg flex items-center justify-center" style="background-color: var(--base-bg-secondary);">
-                <span class="text-4xl" style="color: var(--base-text-tertiary);">?</span>
+              <div class="aspect-video mb-4 rounded-lg flex items-center justify-center bg-gray-400 dark:bg-gray-600">
               </div>
             <% end %>
 
-            <div class="flex items-center gap-3 mb-3 text-xs" style="color: var(--base-text-tertiary);">
-              <time datetime="<%= post.published_date %>">
-                <%= post.published_date.strftime('%b %d, %Y') %>
-              </time>
-              <span>•</span>
-              <span><%= post.estimated_reading_time %> min read</span>
-            </div>
-
-            <h3 class="mb-3 group-hover:text-primary transition-colors" style="color: var(--base-text);">
+            <h3 class="group-hover:text-primary transition-colors" style="color: var(--base-text);">
               <%= post.title %>
             </h3>
 
             <% if post.abstract.present? %>
-              <p class="text-sm line-clamp-3" style="color: var(--base-text-secondary);">
+              <p class="text-sm line-clamp-3">
                 <%= post.abstract %>
+              </p>
+            <% else %>
+              <p class="text-sm line-clamp-3">
+                <%= post.content.to_plain_text.first(100) %>...
               </p>
             <% end %>
           <% end %>

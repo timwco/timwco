@@ -3,6 +3,7 @@ class PostResource < Madmin::Resource
   attribute :id, form: false, index: false
   attribute :title, index: true
   attribute :slug, index: true
+  attribute :category, index: true
   attribute :abstract
   attribute :content, field: ContentField
   attribute :published_date, index: true
