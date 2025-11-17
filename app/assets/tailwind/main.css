@@ -189,7 +189,7 @@ h2.heading-2 {
 
 /* Admin/Madmin Style Overrides */
 #admin_body {
-  @apply bg-gray-100;
+  @apply bg-white;
   a {
     color: var(--color-secondary-700);
   }
