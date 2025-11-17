@@ -6,24 +6,42 @@
   <p class="mb-12" style="color: var(--base-text-secondary);">This is mostly for family & friends, but here is a list of items I'd love to own.</p>
 
   <% @collections.each do |collection| %>
-    <div class="mb-12">
-      <h3 class="text-xl font-semibold mb-4" style="color: var(--base-text);"><%= collection.name %></h3>
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold mb-6" style="color: var(--base-text);"><%= collection.name %></h3>
 
-      <ul class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <% collection.wishlist_items.each do |item| %>
-          <li class="flex items-center gap-3">
-            <a href="<%= item.url %>"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="text-secondary-600 dark:text-primary-600 hover:underline font-medium">
-              <%= item.name %>
-            </a>
-            <span class="badge">
-              <%= item.price_display %>
-            </span>
-          </li>
+          <a href="<%= item.url %>"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="group relative block p-6 rounded-lg border transition-all hover:shadow-lg hover:-translate-y-1"
+             style="background-color: var(--base-bg-secondary); border-color: var(--base-border-secondary);">
+
+            <!-- Price Badge -->
+            <div class="absolute top-4 right-4">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
+                    style="background-color: var(--base-bg-highest); color: var(--base-text);">
+                <%= item.price_display %>
+              </span>
+            </div>
+
+            <!-- Item Name -->
+            <div class="pr-16">
+              <h4 class="text-lg font-semibold group-hover:text-primary-600 transition-colors leading-snug" style="color: var(--base-text);">
+                <%= item.name %>
+              </h4>
+            </div>
+
+            <!-- External Link Icon -->
+            <div class="mt-4 flex items-center gap-2 text-xs" style="color: var(--base-text-tertiary);">
+              <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              <span class="group-hover:opacity-100 opacity-50 transition-opacity">View item</span>
+            </div>
+          </a>
         <% end %>
-      </ul>
+      </div>
     </div>
   <% end %>
 </section>

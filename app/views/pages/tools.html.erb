@@ -6,24 +6,32 @@
   <p class="mb-12" style="color: var(--base-text-secondary);">The following tools are some of my favorite things I use on a daily basis.</p>
 
   <% @collections.each do |collection| %>
-    <div class="mb-12">
-      <h3 class="text-xl font-semibold mb-4" style="color: var(--base-text);"><%= collection.name %></h3>
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold mb-6" style="color: var(--base-text);"><%= collection.name %></h3>
 
-      <ul class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <% collection.tools.each do |tool| %>
-          <li>
-            <a href="<%= tool.url %>"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="text-secondary-600 dark:text-primary-600 hover:underline font-medium">
-              <%= tool.name %>
-            </a>
+          <a href="<%= tool.url %>"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="group block p-6 rounded-lg border transition-all hover:shadow-lg hover:-translate-y-1"
+             style="background-color: var(--base-bg-secondary); border-color: var(--base-border-secondary);">
+            <div class="flex items-start justify-between gap-3">
+              <h4 class="text-lg font-semibold group-hover:text-primary-600 transition-colors" style="color: var(--base-text);">
+                <%= tool.name %>
+              </h4>
+              <svg class="w-5 h-5 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity" style="color: var(--base-text-tertiary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
             <% if tool.description.present? %>
-              <p class="mt-1 text-sm" style="color: var(--base-text-secondary);"><%= tool.description %></p>
+              <p class="mt-2 text-sm leading-relaxed" style="color: var(--base-text-secondary);">
+                <%= tool.description %>
+              </p>
             <% end %>
-          </li>
+          </a>
         <% end %>
-      </ul>
+      </div>
     </div>
   <% end %>
 </section>
