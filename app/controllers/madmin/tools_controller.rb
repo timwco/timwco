@@ -8,7 +8,7 @@ module Madmin
 
     def process_import
       if params[:file].blank?
-        redirect_to import_madmin_tools_path, alert: "Please select a CSV file to import"
+        redirect_to main_app.import_madmin_tools_path, alert: "Please select a CSV file to import"
         return
       end
 
@@ -17,7 +17,7 @@ module Madmin
       error_count = 0
       errors = []
 
-      CSV.foreach(file.path, headers: true) do |row|
+      ::CSV.foreach(file.path, headers: true) do |row|
         begin
           Tool.create!(
             name: row['name'],
@@ -38,7 +38,7 @@ module Madmin
         flash[:notice] = "Successfully imported #{success_count} tools"
       end
 
-      redirect_to madmin_tools_path
+      redirect_to main_app.madmin_tools_path
     end
   end
 end

@@ -28,6 +28,9 @@ gem "madmin", "~> 2.1"
 # Markdown rendering
 gem "redcarpet"
 
+# CSV parsing
+gem "csv"
+
 # The World Outside
 gem 'goodreads'
 
