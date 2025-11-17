@@ -1,0 +1,75 @@
+<div class="max-w-4xl mx-auto">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold">Import Tools from CSV</h1>
+    <%= link_to "← Back to Tools", madmin_tools_path, class: "text-sm text-gray-600 hover:text-gray-900" %>
+  </div>
+
+  <div class="bg-white shadow rounded-lg p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">CSV Format Instructions</h2>
+
+    <p class="text-gray-700 mb-4">
+      Your CSV file must have the following columns in this exact order:
+    </p>
+
+    <div class="bg-gray-50 p-4 rounded mb-4 font-mono text-sm">
+      name,url,description,collection_id
+    </div>
+
+    <table class="w-full text-sm mb-4">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="text-left p-2 font-semibold">Column</th>
+          <th class="text-left p-2 font-semibold">Required</th>
+          <th class="text-left p-2 font-semibold">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t">
+          <td class="p-2 font-mono">name</td>
+          <td class="p-2">Yes</td>
+          <td class="p-2">The tool name</td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2 font-mono">url</td>
+          <td class="p-2">Yes</td>
+          <td class="p-2">Valid HTTP/HTTPS URL</td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2 font-mono">description</td>
+          <td class="p-2">No</td>
+          <td class="p-2">Tool description (can be empty)</td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2 font-mono">collection_id</td>
+          <td class="p-2">Yes</td>
+          <td class="p-2">ID of an existing collection (must exist in database)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bg-blue-50 border border-blue-200 rounded p-4">
+      <p class="text-blue-800 text-sm">
+        <strong>Example row:</strong><br>
+        <span class="font-mono">VSCode,https://code.visualstudio.com,Code editor from Microsoft,1</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-white shadow rounded-lg p-6">
+    <h2 class="text-xl font-semibold mb-4">Upload CSV File</h2>
+
+    <%= form_with url: process_import_madmin_tools_path, method: :post, multipart: true, class: "space-y-4" do |form| %>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          Select CSV File
+        </label>
+        <%= form.file_field :file, accept: ".csv", required: true, class: "block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" %>
+      </div>
+
+      <div class="flex gap-4">
+        <%= form.submit "Import Tools", class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-medium" %>
+        <%= link_to "Cancel", madmin_tools_path, class: "px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 font-medium" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  namespace :madmin do
-    resources :wishlist_items
-    resources :tools
-    resources :collections
-    resources :assets
-    resources :albums
-    resources :categories
-    resources :contents
-    resources :posts
-  end
   draw :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
