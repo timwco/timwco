@@ -11,7 +11,7 @@ class WishlistItemResource < Madmin::Resource
   attribute :updated_at, form: false
 
   # Associations
-  attribute :collection, field: CollectionField
+  attribute :collection_id, field: CollectionField
 
   # Add scopes to easily filter records
   # scope :published

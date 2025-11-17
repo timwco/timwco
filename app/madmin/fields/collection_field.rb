@@ -1,7 +1,7 @@
 class CollectionField < Madmin::Field
-  def value(record)
-    record.public_send(attribute_name).name
-  end
+  # def value(record)
+  #   record.public_send(attribute_name).name
+  # end
 
   # def to_partial_path(name)
   #   unless %w[index show form].include? name
