@@ -6,14 +6,6 @@ class PagesController < ApplicationController
   def now
   end
 
-  def links
-    @collections = Collection.links
-                             .joins(:links)
-                             .distinct
-                             .order(:name)
-                             .includes(:links)
-  end
-
   def thoughts
   end
 

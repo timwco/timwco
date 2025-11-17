@@ -9,7 +9,6 @@ class CollectionResource < Madmin::Resource
   attribute :updated_at, form: false
 
   # Associations
-  attribute :links, form: false
   attribute :tools, form: false
   attribute :wishlist_items, form: false
 

@@ -1,8 +1,6 @@
 <% 
   if field.model.name == "WishlistItem"
     options = Collection.wishlist.order(created_at: :desc).map { |collection| ["#{collection.name} (#{collection.collection_type.humanize})", collection.id] }
-  elsif field.model.name == "Link"
-    options = Collection.links.order(created_at: :desc).map { |collection| ["#{collection.name} (#{collection.collection_type.humanize})", collection.id] }
   elsif field.model.name == "Tool"
     options = Collection.tools.order(created_at: :desc).map { |collection| ["#{collection.name} (#{collection.collection_type.humanize})", collection.id] }
   else
