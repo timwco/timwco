@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   # Pages
   get "now" => "pages#now", as: :now
-  get "links" => "pages#links", as: :links
-  get "tools" => "pages#tools", as: :tools
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
+  get "links" => "pages#links", as: :links
+  get "tools" => "pages#tools", as: :tools  
   get "wishlist" => "pages#wishlist", as: :wishlist
 
   # Blog routes
