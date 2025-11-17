@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   # Associations
   belongs_to :category
-  belongs_to :featured_image, class_name: 'Asset', optional: true
+  belongs_to :featured_image, class_name: "Asset", optional: true
 
   # Validations
   validates :title, :content, :slug, presence: true
@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   before_validation :calculate_reading_time
 
   # Scopes
-  scope :published, -> { where('published_date <= ?', Date.today).where.not(published_date: nil) }
+  scope :published, -> { where("published_date <= ?", Date.today).where.not(published_date: nil) }
   default_scope { order(published_date: :desc, created_at: :desc) }
 
   # Override featured_image setter to handle form values (string IDs or objects)

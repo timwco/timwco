@@ -1,11 +1,11 @@
-require 'net/http'
-require 'json'
-require 'base64'
+require "net/http"
+require "json"
+require "base64"
 
 class SpotifyService
-  SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/api/token'
-  SPOTIFY_API_BASE = 'https://api.spotify.com/v1'
-  TOKEN_CACHE_KEY = 'spotify_access_token'
+  SPOTIFY_AUTH_URL = "https://accounts.spotify.com/api/token"
+  SPOTIFY_API_BASE = "https://api.spotify.com/v1"
+  TOKEN_CACHE_KEY = "spotify_access_token"
   TOKEN_EXPIRY_SECONDS = 3300 # 55 minutes (5 min buffer before 1-hour expiry)
 
   class SpotifyError < StandardError; end
@@ -17,18 +17,18 @@ class SpotifyService
     @client_id = Rails.application.credentials.spotify_client_id
     @client_secret = Rails.application.credentials.spotify_secret_id
 
-    raise AuthenticationError, 'Spotify credentials not configured' if @client_id.blank? || @client_secret.blank?
+    raise AuthenticationError, "Spotify credentials not configured" if @client_id.blank? || @client_secret.blank?
   end
 
   # Public API: Get album information by Spotify album ID
   def get_album(album_id)
-    raise ArgumentError, 'Album ID cannot be blank' if album_id.blank?
+    raise ArgumentError, "Album ID cannot be blank" if album_id.blank?
 
     access_token = authenticate
     url = "#{SPOTIFY_API_BASE}/albums/#{album_id}?market=US"
 
     response = make_request(url, {
-      'Authorization' => "Bearer #{access_token}"
+      "Authorization" => "Bearer #{access_token}"
     })
 
     JSON.parse(response.body)
@@ -41,11 +41,11 @@ class SpotifyService
     album = get_album(album_id)
 
     {
-      title: album['name'],
-      artists: album['artists'].map { |a| a['name'] }.join(', '),
-      image_url: album['images']&.first&.dig('url'),
-      spotify_url: album['external_urls']['spotify'],
-      release_date: album['release_date']
+      title: album["name"],
+      artists: album["artists"].map { |a| a["name"] }.join(", "),
+      image_url: album["images"]&.first&.dig("url"),
+      spotify_url: album["external_urls"]["spotify"],
+      release_date: album["release_date"]
     }
   end
 
@@ -63,9 +63,9 @@ class SpotifyService
 
     # Base64 encode client_id:client_secret for Basic auth
     credentials = Base64.strict_encode64("#{@client_id}:#{@client_secret}")
-    request['Authorization'] = "Basic #{credentials}"
-    request['Content-Type'] = 'application/x-www-form-urlencoded'
-    request.set_form_data({ 'grant_type' => 'client_credentials' })
+    request["Authorization"] = "Basic #{credentials}"
+    request["Content-Type"] = "application/x-www-form-urlencoded"
+    request.set_form_data({ "grant_type" => "client_credentials" })
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
@@ -76,7 +76,7 @@ class SpotifyService
     end
 
     data = JSON.parse(response.body)
-    access_token = data['access_token']
+    access_token = data["access_token"]
 
     # Cache the token
     Rails.cache.write(TOKEN_CACHE_KEY, access_token, expires_in: TOKEN_EXPIRY_SECONDS)
@@ -109,7 +109,7 @@ class SpotifyService
         raise AuthenticationError, "Token expired or invalid"
       when Net::HTTPTooManyRequests
         # Rate limited
-        retry_after = response['Retry-After'].to_i
+        retry_after = response["Retry-After"].to_i
         retry_after = 5 if retry_after.zero? # Default to 5 seconds if not specified
         raise RateLimitError.new("Rate limited, retry after #{retry_after} seconds").tap { |e| e.instance_variable_set(:@retry_after, retry_after) }
       when Net::HTTPNotFound
@@ -121,7 +121,7 @@ class SpotifyService
       if auth_retries < 1
         auth_retries += 1
         Rails.cache.delete(TOKEN_CACHE_KEY)
-        headers['Authorization'] = "Bearer #{authenticate}"
+        headers["Authorization"] = "Bearer #{authenticate}"
         retry
       else
         raise AuthenticationError, "Authentication failed after retry"

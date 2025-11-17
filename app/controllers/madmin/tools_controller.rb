@@ -1,6 +1,6 @@
 module Madmin
   class ToolsController < Madmin::ResourceController
-    skip_before_action :set_record, only: [:import, :process_import]
+    skip_before_action :set_record, only: [ :import, :process_import ]
 
     def import
       # GET /madmin/tools/import - shows the upload form
@@ -20,10 +20,10 @@ module Madmin
       ::CSV.foreach(file.path, headers: true) do |row|
         begin
           Tool.create!(
-            name: row['name'],
-            url: row['url'],
-            description: row['description'],
-            collection_id: row['collection_id']
+            name: row["name"],
+            url: row["url"],
+            description: row["description"],
+            collection_id: row["collection_id"]
           )
           success_count += 1
         rescue => e

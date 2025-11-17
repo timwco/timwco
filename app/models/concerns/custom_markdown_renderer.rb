@@ -10,15 +10,15 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
     classes = []
     actual_title = title
 
-    if title.present? && title.start_with?('.')
+    if title.present? && title.start_with?(".")
       # Title contains classes, extract them
-      classes = title.scan(/\.[\w-]+/).map { |c| c.sub('.', '') }
+      classes = title.scan(/\.[\w-]+/).map { |c| c.sub(".", "") }
       actual_title = nil # Don't use title attribute if it was classes
     end
 
     # Check if this looks like a simple filename (no protocol, no path)
     # e.g., "image.jpg" instead of "http://example.com/image.jpg" or "/path/to/image.jpg"
-    if link.present? && !link.match?(%r{^https?://}) && !link.start_with?('/')
+    if link.present? && !link.match?(%r{^https?://}) && !link.start_with?("/")
       # Try to find a Asset record by filename
       asset = Asset.find_by_filename(link)
 
@@ -31,8 +31,8 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
     end
 
     # Build the img tag with proper attributes
-    class_attr = classes.any? ? %( class="#{classes.join(' ')}") : ''
-    title_attr = actual_title.present? ? %( title="#{escape_html(actual_title)}") : ''
+    class_attr = classes.any? ? %( class="#{classes.join(' ')}") : ""
+    title_attr = actual_title.present? ? %( title="#{escape_html(actual_title)}") : ""
     alt_attr = alt_text.present? ? %( alt="#{escape_html(alt_text)}") : ' alt=""'
 
     %(<img src="#{escape_html(link)}"#{alt_attr}#{title_attr}#{class_attr}>)
@@ -42,7 +42,7 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
 
   # Escape HTML entities to prevent XSS
   def escape_html(text)
-    return '' if text.nil?
-    text.to_s.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;').gsub('"', '&quot;')
+    return "" if text.nil?
+    text.to_s.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;").gsub('"', "&quot;")
   end
 end

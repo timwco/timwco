@@ -31,7 +31,7 @@ class Album < ApplicationRecord
       self.spotify_data = service.get_album_info(spotify_id)
 
       # Auto-populate title from Spotify data for convenience
-      self.title = spotify_data['title'] if spotify_data.present?
+      self.title = spotify_data["title"] if spotify_data.present?
     rescue SpotifyService::SpotifyError => e
       errors.add(:spotify_id, "failed to fetch album data: #{e.message}")
     rescue StandardError => e

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "now" => "pages#now", as: :now
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
-  get "tools" => "pages#tools", as: :tools  
+  get "tools" => "pages#tools", as: :tools
   get "wishlist" => "pages#wishlist", as: :wishlist
 
   # Blog routes

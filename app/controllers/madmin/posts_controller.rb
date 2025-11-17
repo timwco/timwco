@@ -1,6 +1,6 @@
 module Madmin
   class PostsController < Madmin::ResourceController
-    skip_before_action :set_record, only: [:import, :process_import]
+    skip_before_action :set_record, only: [ :import, :process_import ]
 
     def import
       # GET /madmin/posts/import - shows the upload form
@@ -20,13 +20,13 @@ module Madmin
       ::CSV.foreach(file.path, headers: true) do |row|
         begin
           Post.create!(
-            title: row['title'],
-            slug: row['slug'],
-            content: row['content'],
-            abstract: row['abstract'],
-            published_date: row['published_date'].present? ? Date.parse(row['published_date']) : nil,
-            category_id: row['category_id'],
-            featured_image_id: row['featured_image_id'].present? ? row['featured_image_id'] : nil
+            title: row["title"],
+            slug: row["slug"],
+            content: row["content"],
+            abstract: row["abstract"],
+            published_date: row["published_date"].present? ? Date.parse(row["published_date"]) : nil,
+            category_id: row["category_id"],
+            featured_image_id: row["featured_image_id"].present? ? row["featured_image_id"] : nil
           )
           success_count += 1
         rescue => e
