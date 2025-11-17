@@ -1,5 +1,5 @@
 class ToolResource < Madmin::Resource
-  menu parent: "Other Things"
+  menu parent: "Other Things", position: 2
 
   # Attributes
   attribute :id, form: false

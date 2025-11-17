@@ -1,5 +1,5 @@
 class PostResource < Madmin::Resource
-  menu parent: "Blog"
+  menu parent: "Blog", position: 0
 
   # Attributes
   attribute :id, form: false, index: false

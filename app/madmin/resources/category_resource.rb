@@ -1,5 +1,5 @@
 class CategoryResource < Madmin::Resource
-  menu parent: "Blog"
+  menu parent: "Blog", position: 1
 
   # Attributes
   attribute :id, form: false, index: false

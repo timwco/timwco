@@ -1,5 +1,5 @@
 class CollectionResource < Madmin::Resource
-  menu parent: "Other Things"
+  menu parent: "Other Things", position: 0
 
   # Attributes
   attribute :id, form: false
@@ -9,9 +9,9 @@ class CollectionResource < Madmin::Resource
   attribute :updated_at, form: false
 
   # Associations
-  attribute :links
-  attribute :tools
-  attribute :wishlist_items
+  attribute :links, form: false
+  attribute :tools, form: false
+  attribute :wishlist_items, form: false
 
   # Add scopes to easily filter records
   # scope :published

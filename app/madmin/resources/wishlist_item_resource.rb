@@ -1,5 +1,5 @@
 class WishlistItemResource < Madmin::Resource
-  menu parent: "Other Things"
+  menu parent: "Other Things", position: 3
 
 
   # Attributes

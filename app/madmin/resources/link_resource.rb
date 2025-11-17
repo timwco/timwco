@@ -1,5 +1,5 @@
 class LinkResource < Madmin::Resource
-  menu parent: "Other Things"
+  menu parent: "Other Things", position: 1
 
   # Attributes
   attribute :id, form: false

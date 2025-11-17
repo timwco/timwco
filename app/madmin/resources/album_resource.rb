@@ -1,5 +1,5 @@
 class AlbumResource < Madmin::Resource
-  menu parent: "Other Things"
+  menu parent: "Other Things", position: 4
 
   # Attributes
   attribute :id, form: false
