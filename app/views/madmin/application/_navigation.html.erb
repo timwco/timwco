@@ -1,0 +1,15 @@
+<nav>
+  <%= link_to "Dashboard", madmin_root_path, class: "text-sm transition-opacity hover:opacity-70 text-secondary dark:text-primary font-heading" %>
+
+  <% Madmin.menu.render do |item| %>
+    <% if item.url %>
+      <%= nav_link_to item.label, item.url, starts_with: item.url, class: "text-sm transition-opacity hover:opacity-70 text-secondary dark:text-primary font-heading" %>
+    <% else %>
+      <h4 class="text-sm font-semibold font-heading text-secondary dark:text-primary"><%= item.label %></h4>
+    <% end %>
+
+    <% item.items.each do |item| %>
+      <%= nav_link_to item.label, item.url, starts_with: item.url, class: "text-sm transition-opacity hover:opacity-70 text-secondary dark:text-primary font-heading" %>
+    <% end %>
+  <% end %>
+</nav>
