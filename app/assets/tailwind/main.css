@@ -239,14 +239,10 @@ h2.heading-2 {
       }
     }
   }
-  .header {
-    h1 {
-      font-family: "Kode Mono";
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--color-secondary-700);
-      text-decoration: none;
-    }
+  h1 {
+    font-family: "Kode Mono";
+    @apply text-4xl font-bold mb-2;
+    @apply text-secondary-700;
   }
   .logo-link {
     font-family: "Kode Mono";
@@ -267,15 +263,13 @@ h2.heading-2 {
     width: 16rem;
     & nav {
       h4 {
-        margin-top: 0.5rem;
+        margin-top: 0;
         margin-bottom: 0.25rem;
-        border-bottom: 1px solid rgb(229 231 235);
-        border-top: 1px solid rgb(229 231 235);
         padding-top: 0.25rem;
         background-color: var(--color-secondary-50);
         color: var(--color-secondary-700);
         padding-bottom: 0.25rem;
-        padding-left: 0.5rem;
+        padding-left: 0.75rem;
         font-family: "Kode Mono";
       } 
       a {

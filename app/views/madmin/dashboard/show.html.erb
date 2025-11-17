@@ -1,3 +1,144 @@
-<%= link_to "Import Posts CSV", import_madmin_posts_path, class: "btn btn-primary" %>
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-2">Dashboard</h1>
+    <p class="text-gray-600">Welcome back! Here's what's happening with your site.</p>
+  </div>
 
-<%= link_to "Import Tools CSV", import_madmin_tools_path, class: "btn btn-primary" %>
+  <!-- Stats Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Posts Stats -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">Total Posts</p>
+          <p class="text-4xl font-bold text-gray-900 mt-2"><%= Post.count %></p>
+        </div>
+        <div class="bg-blue-100 rounded-full p-3">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools Stats -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">Total Tools</p>
+          <p class="text-4xl font-bold text-gray-900 mt-2"><%= Tool.count %></p>
+        </div>
+        <div class="bg-green-100 rounded-full p-3">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Last Updated Section -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Last Updated</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Last Post -->
+      <div class="border-l-4 border-blue-400 pl-4">
+        <p class="text-sm font-medium text-gray-600 uppercase tracking-wide mb-1">Latest Post</p>
+        <% if (latest_post = Post.order(published_date: :desc).first) %>
+          <p class="text-lg font-semibold text-gray-900"><%= latest_post.title %></p>
+          <p class="text-sm text-gray-500 mt-1">
+            <%= latest_post.published_date ? latest_post.published_date.strftime("%B %d, %Y") : "Not published" %>
+          </p>
+        <% else %>
+          <p class="text-gray-400 italic">No posts yet</p>
+        <% end %>
+      </div>
+
+      <!-- Last Wishlist Update -->
+      <div class="border-l-4 border-purple-400 pl-4">
+        <p class="text-sm font-medium text-gray-600 uppercase tracking-wide mb-1">Wishlist Updated</p>
+        <% if (latest_wishlist = WishlistItem.order(updated_at: :desc).first) %>
+          <p class="text-lg font-semibold text-gray-900"><%= latest_wishlist.name %></p>
+          <p class="text-sm text-gray-500 mt-1">
+            <%= time_ago_in_words(latest_wishlist.updated_at) %> ago
+          </p>
+        <% else %>
+          <p class="text-gray-400 italic">No wishlist items</p>
+        <% end %>
+      </div>
+
+      <!-- Last Now Page Update -->
+      <div class="border-l-4 border-orange-400 pl-4">
+        <p class="text-sm font-medium text-gray-600 uppercase tracking-wide mb-1">Now Page Updated</p>
+        <% if (now_content = Content.find_by(key: 'now')) %>
+          <p class="text-lg font-semibold text-gray-900">Updated</p>
+          <p class="text-sm text-gray-500 mt-1">
+            <%= time_ago_in_words(now_content.updated_at) %> ago
+          </p>
+        <% else %>
+          <p class="text-gray-400 italic">Not created yet</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-2xl font-bold mb-6">Quick Actions</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Create New Post -->
+      <%= link_to new_madmin_post_path, class: "group relative overflow-hidden rounded-lg border-2 border-blue-200 hover:border-blue-400 bg-gradient-to-br from-blue-50 to-blue-100 p-6 transition-all hover:shadow-lg" do %>
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-blue-500 rounded-full p-3 mb-3 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Create Post</h3>
+          <p class="text-sm text-gray-600">Write a new blog post</p>
+        </div>
+      <% end %>
+
+      <!-- Upload Asset -->
+      <%= link_to new_madmin_asset_path, class: "group relative overflow-hidden rounded-lg border-2 border-green-200 hover:border-green-400 bg-gradient-to-br from-green-50 to-green-100 p-6 transition-all hover:shadow-lg" do %>
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-green-500 rounded-full p-3 mb-3 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Upload Asset</h3>
+          <p class="text-sm text-gray-600">Add images or files</p>
+        </div>
+      <% end %>
+
+      <!-- Import Posts -->
+      <%= link_to import_madmin_posts_path, class: "group relative overflow-hidden rounded-lg border-2 border-purple-200 hover:border-purple-400 bg-gradient-to-br from-purple-50 to-purple-100 p-6 transition-all hover:shadow-lg" do %>
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-purple-500 rounded-full p-3 mb-3 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Import Posts</h3>
+          <p class="text-sm text-gray-600">Bulk import from CSV</p>
+        </div>
+      <% end %>
+
+      <!-- Import Tools -->
+      <%= link_to import_madmin_tools_path, class: "group relative overflow-hidden rounded-lg border-2 border-orange-200 hover:border-orange-400 bg-gradient-to-br from-orange-50 to-orange-100 p-6 transition-all hover:shadow-lg" do %>
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-orange-500 rounded-full p-3 mb-3 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Import Tools</h3>
+          <p class="text-sm text-gray-600">Bulk import from CSV</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
