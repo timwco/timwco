@@ -1,4 +1,6 @@
 class ContentResource < Madmin::Resource
+  menu parent: "Content"
+
   # Define which attributes to show
   attribute :id, form: false, index: false
   attribute :key, index: true

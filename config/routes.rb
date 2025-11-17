@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :madmin do
+    resources :wishlist_items
+    resources :tools
+    resources :links
+    resources :collections
     resources :assets
     resources :albums
     resources :categories

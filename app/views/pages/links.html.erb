@@ -3,7 +3,27 @@
 
 <section class="mb-24">
   <h2 class="heading-2">My Favorite Links</h2>
-  <div class="space-y-6">
-    <p>The following links are some of my favorite things on the internet.</p>
-  </div>
+  <p class="mb-12" style="color: var(--base-text-secondary);">The following links are some of my favorite things on the internet.</p>
+
+  <% @collections.each do |collection| %>
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-4" style="color: var(--base-text);"><%= collection.name %></h3>
+
+      <ul class="space-y-4">
+        <% collection.links.each do |link| %>
+          <li>
+            <a href="<%= link.url %>"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-secondary-600 dark:text-primary-600 hover:underline font-medium">
+              <%= link.name %>
+            </a>
+            <% if link.description.present? %>
+              <p class="mt-1 text-sm" style="color: var(--base-text-secondary);"><%= link.description %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </section>

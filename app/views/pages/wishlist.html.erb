@@ -1,9 +1,29 @@
 <% content_for :title, "Tim Whitacre - Wishlist" %>
-<% content_for :description, "Some of my favorite tools" %>
+<% content_for :description, "My wishlist of items I'd love to own" %>
 
 <section class="mb-24">
   <h2 class="heading-2">Wi$hlist</h2>
-  <div class="space-y-6">
-    <p>This is mostly for family & friends, but here is a list of items I'd love to own.</p>
-  </div>
+  <p class="mb-12" style="color: var(--base-text-secondary);">This is mostly for family & friends, but here is a list of items I'd love to own.</p>
+
+  <% @collections.each do |collection| %>
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-4" style="color: var(--base-text);"><%= collection.name %></h3>
+
+      <ul class="space-y-4">
+        <% collection.wishlist_items.each do |item| %>
+          <li class="flex items-center gap-3">
+            <a href="<%= item.url %>"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-secondary-600 dark:text-primary-600 hover:underline font-medium">
+              <%= item.name %>
+            </a>
+            <span class="badge">
+              <%= item.price_display %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </section>

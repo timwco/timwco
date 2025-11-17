@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_203500) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_17_001631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -68,6 +68,14 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_203500) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.integer "collection_type", null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "collection_type"], name: "index_collections_on_name_and_collection_type", unique: true
+  end
+
   create_table "contents", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -76,6 +84,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_203500) do
     t.text "rendered_html"
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_contents_on_key", unique: true
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.index ["collection_id"], name: "index_links_on_collection_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -96,8 +114,31 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_203500) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
+  create_table "tools", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.index ["collection_id"], name: "index_tools_on_collection_id"
+  end
+
+  create_table "wishlist_items", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.index ["collection_id"], name: "index_wishlist_items_on_collection_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "links", "collections"
   add_foreign_key "posts", "assets", column: "featured_image_id"
   add_foreign_key "posts", "categories"
+  add_foreign_key "tools", "collections"
+  add_foreign_key "wishlist_items", "collections"
 end

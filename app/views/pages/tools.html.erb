@@ -3,7 +3,27 @@
 
 <section class="mb-24">
   <h2 class="heading-2">My Favorite Tools</h2>
-  <div class="space-y-6">
-    <p>The following tools are some of my favorite things I use on a daily basis.</p>
-  </div>
+  <p class="mb-12" style="color: var(--base-text-secondary);">The following tools are some of my favorite things I use on a daily basis.</p>
+
+  <% @collections.each do |collection| %>
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-4" style="color: var(--base-text);"><%= collection.name %></h3>
+
+      <ul class="space-y-4">
+        <% collection.tools.each do |tool| %>
+          <li>
+            <a href="<%= tool.url %>"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-secondary-600 dark:text-primary-600 hover:underline font-medium">
+              <%= tool.name %>
+            </a>
+            <% if tool.description.present? %>
+              <p class="mt-1 text-sm" style="color: var(--base-text-secondary);"><%= tool.description %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </section>

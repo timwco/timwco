@@ -1,4 +1,6 @@
 class AssetResource < Madmin::Resource
+  menu parent: "Content"
+
   # Attributes
   attribute :id, form: false
   attribute :title
