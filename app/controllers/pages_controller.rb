@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def index
   end
 
@@ -31,5 +30,4 @@ class PagesController < ApplicationController
                              .order(:name)
                              .includes(:wishlist_items)
   end
-
 end
