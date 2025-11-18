@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :madmin do
+    resources :speaking_events
+  end
   draw :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   get "book" => "pages#book", as: :book
   get "music" => "pages#music", as: :music
   get "tools" => "pages#tools", as: :tools
+  get "speaking" => "pages#speaking", as: :speaking
   get "wishlist" => "pages#wishlist", as: :wishlist
 
   # Blog routes

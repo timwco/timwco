@@ -1,0 +1,41 @@
+<% content_for :title, "Tim Whitacre - Tools" %>
+<% content_for :description, "Some of my favorite tools" %>
+
+<section class="mb-24">
+  <h2 class="heading-2">Speaking</h2>
+  <p class="mb-12" style="color: var(--base-text-secondary);">I don't speak as often as I'd like, but here are some of the places I've spoken.</p>
+
+  <div class="mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <% @events.each do |event| %>
+        <a href="<%= event.url %>"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative block p-6 rounded-lg border transition-all hover:shadow-lg hover:-translate-y-1"
+            style="background-color: var(--base-bg-secondary); border-color: var(--base-border-secondary);">
+
+          <!-- Price Badge -->
+          <div class="absolute top-4 right-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
+                  style="background-color: var(--base-bg-highest); color: var(--base-text);">
+              <%= event.event_date.strftime("%m/%d/%y") %>
+            </span>
+          </div>
+
+          <!-- Item Name -->
+          <div class="pr-16">
+            <h4 class="text-lg font-semibold group-hover:text-primary-600 transition-colors leading-snug" style="color: var(--base-text);">
+              <%= event.name %>
+            </h4>
+          </div>
+
+          <% if event.event_name.present? %>
+            <p class="mt-2 text-sm leading-relaxed" style="color: var(--base-text-secondary);">
+              <%= event.event_name%>
+            </p>
+          <% end %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>
