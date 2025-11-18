@@ -24,6 +24,13 @@ Rails.application.configure do
   # Store uploaded files on Tigris object storage (see config/storage.yml for options).
   config.active_storage.service = :tigris
 
+  # Serve Active Storage files through Rails proxy instead of redirecting to Tigris
+  # This enables better CDN caching and allows Rails to set proper cache headers
+  config.active_storage.resolve_model_to_route = :rails_storage_proxy
+
+  # Cache signed URLs for 7 days (allows CDN and browser caching)
+  config.active_storage.service_urls_expire_in = 7.days
+
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # config.assume_ssl = true
 

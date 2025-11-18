@@ -1,15 +1,22 @@
 <% content_for :title, "#{@post.title} - Tim Whitacre" %>
 <% content_for :description, @post.abstract.presence || @post.title %>
 
+<% if @post.featured_image&.file&.attached? %>
+  <% content_for :head do %>
+    <link rel="preload" as="image" href="<%= @post.featured_image.medium_url || @post.featured_image.url %>" fetchpriority="high">
+  <% end %>
+<% end %>
+
 <article class="mx-auto">
   <% if @post.featured_image&.file&.attached? %>
     <!-- Featured image with title overlay -->
-    <div class="relative mb-12 rounded-md overflow-hidden shadow-2xl">
+    <div class="relative mb-12 rounded-md overflow-hidden shadow-2xl" style="min-height: 384px; aspect-ratio: 21/9;">
       <!-- Background image -->
       <img src="<%= @post.featured_image.medium_url || @post.featured_image.url %>"
            alt="<%= @post.title %>"
            fetchpriority="high"
-           class="w-full h-96 object-cover">
+           class="w-full h-96 object-cover"
+           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 
       <!-- Title in bottom left -->
       <header class="absolute bottom-0 left-0 p-8">
