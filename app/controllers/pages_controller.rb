@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def book
   end
-  
+
   def speaking
     @events = SpeakingEvent.order(:event_date)
   end
