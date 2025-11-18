@@ -64,7 +64,7 @@ class Content < ApplicationRecord
         hr
         img
       ],
-      attributes: %w[href target rel src alt title colspan rowspan class]
+      attributes: %w[href target rel src alt title colspan rowspan class loading]
     )
   end
 end

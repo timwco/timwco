@@ -15,8 +15,9 @@
           <%= link_to post_path(post.slug), class: "block" do %>
             <% if post.featured_image&.file&.attached? %>
               <div class="aspect-video mb-4 overflow-hidden rounded-lg">
-                <img src="<%= post.featured_image.url %>"
+                <img src="<%= post.featured_image.thumbnail_url || post.featured_image.url %>"
                      alt="<%= post.title %>"
+                     loading="lazy"
                      class="w-full h-full object-cover transition-transform group-hover:scale-105">
               </div>
             <% else %>

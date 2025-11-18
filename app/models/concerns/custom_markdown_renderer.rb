@@ -23,8 +23,8 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
       asset = Asset.find_by_filename(link)
 
       if asset&.file&.attached?
-        # Use the ActiveStorage URL for the asset file
-        link = asset.url
+        # Use optimized medium variant for content images
+        link = asset.medium_url || asset.url
       end
       # If no asset found, fall through to use the original link
       # This allows external images or references to work as fallback
@@ -35,7 +35,7 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
     title_attr = actual_title.present? ? %( title="#{escape_html(actual_title)}") : ""
     alt_attr = alt_text.present? ? %( alt="#{escape_html(alt_text)}") : ' alt=""'
 
-    %(<img src="#{escape_html(link)}"#{alt_attr}#{title_attr}#{class_attr}>)
+    %(<img src="#{escape_html(link)}"#{alt_attr}#{title_attr}#{class_attr} loading="lazy">)
   end
 
   private

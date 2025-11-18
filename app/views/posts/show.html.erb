@@ -6,8 +6,9 @@
     <!-- Featured image with title overlay -->
     <div class="relative mb-12 rounded-md overflow-hidden shadow-2xl">
       <!-- Background image -->
-      <img src="<%= @post.featured_image.url %>"
+      <img src="<%= @post.featured_image.medium_url || @post.featured_image.url %>"
            alt="<%= @post.title %>"
+           fetchpriority="high"
            class="w-full h-96 object-cover">
 
       <!-- Title in bottom left -->
