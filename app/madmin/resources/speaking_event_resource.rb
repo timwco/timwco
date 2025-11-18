@@ -3,8 +3,7 @@ class SpeakingEventResource < Madmin::Resource
   attribute :id, form: false
   attribute :name
   attribute :url
-  attribute :event
-  attribute :description
+  attribute :event_name
   attribute :event_date
   attribute :created_at, form: false
   attribute :updated_at, form: false
