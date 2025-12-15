@@ -23,7 +23,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Administration
-gem "madmin", "~> 2.1"
+gem "madmin", "~> 2.2"
 
 # Markdown rendering
 gem "redcarpet"
