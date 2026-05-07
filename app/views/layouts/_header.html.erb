@@ -13,7 +13,11 @@
       <div class="hidden md:flex items-center gap-8">
         <%= nav_link(root_path, "About") %>
         <%= nav_link(now_path, "Now") %>
+        <% if Post.published.exists? %>
+          <%= nav_link(thoughts_path, "Thoughts") %>
+        <% end %>
         <%= nav_link(book_path, "Book") %>
+        <%= nav_link("https://labs.timw.co", "Labs") %>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -36,8 +40,11 @@
       <div class="flex flex-col gap-4">
         <%= nav_link(root_path, "About") %>
         <%= nav_link(now_path, "Now") %>
-        <%= nav_link(thoughts_path, "Thoughts") %>
+        <% if Post.published.exists? %>
+          <%= nav_link(thoughts_path, "Thoughts") %>
+        <% end %>
         <%= nav_link(book_path, "Book") %>
+        <%= nav_link("https://labs.timw.co", "Labs") %>
       </div>
     </div>
   </nav>
