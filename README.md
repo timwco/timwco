@@ -5,8 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://timw.co">timw.co</a> ·
-  <a href="https://sunsetlabs.io">Sunset Labs</a>
+  <a href="https://timw.co">Personal</a> ·
+  <a href="https://sunsetlabs.io">Sunset Labs</a> ·
+  <a href="https://neonflow.co">Neonflow</a>
 </p>
 
 ---
@@ -15,10 +16,10 @@ I'm a Kansas City-based software architect and entrepreneur with over two decade
 
 ### Now
 
-- **Head of Engineering at SupportNow**, helping families get support during major life events.
+- **Head of Engineering at [SupportNow](https://supportnow.org)**, helping families get support during major life events.
 - **Consulting through [Sunset Labs](https://sunsetlabs.io)**, working with companies on architecture, strategy, AI implementation, legacy systems, and the technical debt that piles up around them.
-- **Advising Lybbie**, a wearable health-tech company solving hardware-meets-data-meets-UX problems.
-- **Building my own software** in the tiny cracks of time I have available. Follow along at Neonflow.
+- **Advising [Lybbie](https://lybbie.com)**, a wearable health-tech company solving hardware-meets-data-meets-UX problems.
+- **Building my own software** in the tiny cracks of time I have available. Follow along at [Neonflow](https://neonflow.co).
 
 ### Before
 
@@ -26,12 +27,8 @@ At **[New Story](https://newstoryhomes.org)**, a housing non-profit, I led techn
 
 Earlier, I helped launch and taught at **[The Iron Yard](https://linkedin.com/school/the-iron-yard/)**, at the time the largest code school in the world.
 
-### Outside of work
-
-Most of my energy goes to my family: time at home, travel when we can swing it, and the everyday stuff that matters most. Live music is a huge part of our lives too. Deathcore's a big one for me, but honestly, any kind of show.
-
 ---
 
 <p align="center">
-  <sub>Always interested in new projects and opportunities, or just saying hi · <a href="https://timw.co">timw.co</a></sub>
+  <sub>Always interested in new projects and opportunities, or just saying hi · <a href="https://sunsetlabs.io/">Let's Connect</a></sub>
 </p>
